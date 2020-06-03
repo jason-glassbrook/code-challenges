@@ -1,0 +1,24 @@
+# Environments
+
+.env
+.ENV
+env/
+ENV/
+env.bak/
+ENV.BAK/
+.venv
+.VENV
+venv/
+VENV/
+venv.bak/
+VENV.BAK/
+
+# [python]
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+# [node]
+
+node_modules/
