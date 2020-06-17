@@ -1,3 +1,6 @@
+#!python3
+
+
 class Solution:
 
     def longestPalindrome(self, string: str) -> str:
