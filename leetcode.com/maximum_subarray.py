@@ -14,7 +14,7 @@ class Solution:
         NOTE: The empty subarray with sum 0 is not an allowed solution.
         """
 
-        return self.maxSubArray__brute_force__v2(nums)
+        return self.maxSubArray__implicit_subarray(nums)
 
     def maxSubArray__brute_force__v1(self, nums: List[int]) -> int:
         """
@@ -89,15 +89,23 @@ class Solution:
         if not nums:
             return INITIAL__CURR_SUM
 
-        best_sum = INITIAL__BEST_SUM    # -- the sum of the best sub-array
-        curr_sum = INITIAL__CURR_SUM    # -- the sum of the current sub-array
+        best_sum = nums[0]
+        curr_sum = INITIAL__CURR_SUM
 
-        # The sub-array is implicit and its information is handled by `curr_sum`.
+        # The sub-array is implicit and its information is handled by `num` and `curr_sum`.
 
         for num in nums:
-            # Add `num` to `curr_sum` while they're still more than `INITIAL__CURR_SUM`.
-            curr_sum = max(INITIAL__CURR_SUM, curr_sum + num)
-            # Choose the max of the current `best_sum` and `curr_sum`.
-            best_sum = max(best_sum, curr_sum)
+            # Ensure that `curr_sum` is at least `INITIAL__CURR_SUM`.
+            if curr_sum < INITIAL__CURR_SUM:
+                # When `curr_sum` becomes less than `INITIAL__CURR_SUM`,
+                # then it cannot possibly contribute to a maximum sum,
+                # so reset it.
+                curr_sum = INITIAL__CURR_SUM
+
+            curr_sum += num
+
+            # Choose the maximum of the current `best_sum` and `curr_sum`.
+            if curr_sum > best_sum:
+                best_sum = curr_sum
 
         return best_sum
