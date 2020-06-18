@@ -2,11 +2,11 @@
 
 from typing import List
 
+INITIAL__CURR_SUM = 0
+INITIAL__BEST_SUM = float("-inf")
+
 
 class Solution:
-
-    DEFAULT_SUM = 0
-    WORST_SUM = float("-inf")
 
     def maxSubArray(self, nums: List[int]) -> int:
         """
@@ -25,10 +25,10 @@ class Solution:
 
         # Handle empty input `nums`.
         if not nums:
-            return self.DEFAULT_SUM
+            return INITIAL__CURR_SUM
 
         n = len(nums)
-        best_sum = self.WORST_SUM
+        best_sum = INITIAL__BEST_SUM
         # best_start = None
         # best_stop = None
 
@@ -55,16 +55,16 @@ class Solution:
 
         # Handle empty input `nums`.
         if not nums:
-            return self.DEFAULT_SUM
+            return INITIAL__CURR_SUM
 
         n = len(nums)
-        best_sum = self.WORST_SUM
+        best_sum = INITIAL__BEST_SUM
         # best_start = None
         # best_stop = None
 
         for start in range(0, n):
 
-            curr_sum = self.DEFAULT_SUM
+            curr_sum = INITIAL__CURR_SUM
 
             for stop in range(start + 1, n + 1):
 
@@ -87,16 +87,16 @@ class Solution:
 
         # Handle empty input `nums`.
         if not nums:
-            return self.DEFAULT_SUM
+            return INITIAL__CURR_SUM
 
-        best_sum = self.WORST_SUM    # -- the sum of the best sub-array
-        curr_sum = self.DEFAULT_SUM    # -- the sum of the current sub-array
+        best_sum = INITIAL__BEST_SUM    # -- the sum of the best sub-array
+        curr_sum = INITIAL__CURR_SUM    # -- the sum of the current sub-array
 
         # The sub-array is implicit and its information is handled by `curr_sum`.
 
         for num in nums:
-            # Add `num` to `curr_sum` while they're still more than `DEFAULT_SUM`.
-            curr_sum = max(self.DEFAULT_SUM, curr_sum + num)
+            # Add `num` to `curr_sum` while they're still more than `INITIAL__CURR_SUM`.
+            curr_sum = max(INITIAL__CURR_SUM, curr_sum + num)
             # Choose the max of the current `best_sum` and `curr_sum`.
             best_sum = max(best_sum, curr_sum)
 
