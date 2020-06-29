@@ -7,12 +7,11 @@ class Solution:
 
     def missingNumber(self, nums: List[int]) -> int:
 
-        return self.missingNumber__hash_set(nums)
+        return self.missingNumber__xor(nums)
 
     def missingNumber__brute_force(self, nums: List[int]) -> int:
 
-        if not nums:
-            return None
+        n = len(nums)
 
         # Sort the list. Now this isn't linear time!
         nums = sorted(nums)
@@ -20,28 +19,27 @@ class Solution:
         # Check each number in the list:
         # - Each number should equal its index.
         # - If not, then the expected number (index) is missing.
-        for expected in range(0, len(nums)):
+        for expected in range(0, n):
             if nums[expected] != expected:
                 return expected
 
-        # Maybe nothing was missing?
-        return None
+        # If we made it here, then `n` is missing.
+        return n
 
     def missingNumber__hash_set(self, nums: List[int]) -> int:
 
-        if not nums:
-            return None
+        n = len(nums)
 
         # Create a hash set of `nums`.
         nums_set = set(nums)
 
         # Check each number in the list:
-        for expected in range(0, len(nums)):
+        for expected in range(0, n):
             if expected not in nums_set:
                 return expected
 
-        # Maybe nothing was missing?
-        return None
+        # If we made it here, then `n` is missing.
+        return n
 
     def missingNumber__xor(self, nums: List[int]) -> int:
         """
@@ -50,27 +48,21 @@ class Solution:
         It sort of "bubbles" out the bits for the missing number.
         """
 
-        if not nums:
-            return None
+        n = len(nums)
 
         # Construct the missing number:
-        missing = len(nums)
+        missing = n
         for (i, num) in enumerate(nums):
             missing ^= i ^ num
 
-        # Maybe nothing was missing?
-        return (missing if missing != len(nums) else None)
+        return missing
 
     def missingNumber__sum(self, nums: List[int]) -> int:
-        """
-        I don't think this method can determine if zero is missing...
-        """
 
-        if not nums:
-            return None
+        n = len(nums)
 
         # Compute the expected and actual sums.
-        expected_sum = len(nums) * (len(nums) + 1) // 2    # <- Gauss formula.
+        expected_sum = n * (n + 1) // 2    # <- Gauss formula.
         actual_sum = sum(nums)
         missing = expected_sum - actual_sum
 
@@ -81,6 +73,15 @@ class Solution:
 if __name__ == "__main__":
 
     tests = [{
+        "args": ([],),
+        "answer": 0,
+    }, {
+        "args": ([0],),
+        "answer": 1,
+    }, {
+        "args": ([1],),
+        "answer": 0,
+    }, {
         "args": ([3, 0, 1],),
         "answer": 2,
     }, {
