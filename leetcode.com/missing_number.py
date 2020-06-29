@@ -14,28 +14,42 @@ class Solution:
         if not nums:
             return None
 
-        return 0
+        # Sort the list. Now this isn't linear time!
+        nums = sorted(nums)
+
+        # Check each number in the list:
+        # - Each number should equal its index.
+        # - If not, then the expected number (index) is missing.
+        for expected in range(0, len(nums)):
+            if nums[expected] != expected:
+                return expected
+
+        # Maybe nothing was missing?
+        return None
 
     def missingNumber__hash_set(self, nums: List[int]) -> int:
 
         if not nums:
             return None
 
-        return 0
+        # Maybe nothing was missing?
+        return None
 
     def missingNumber__xor(self, nums: List[int]) -> int:
 
         if not nums:
             return None
 
-        return 0
+        # Maybe nothing was missing?
+        return None
 
     def missingNumber__sum(self, nums: List[int]) -> int:
 
         if not nums:
             return None
 
-        return 0
+        # Maybe nothing was missing?
+        return None
 
 
 if __name__ == "__main__":
