@@ -1,6 +1,72 @@
 #!python3
 
 from typing import List
+import unittest
+import random
+
+
+class TestSolution(unittest.TestCase):
+
+    def _runner(self, args):
+
+        return Solution().missingNumber(*args)
+
+    def test_empty_nums(self):
+
+        args = ([],)
+        answer = 0
+
+        result = self._runner(args)
+
+        self.assertEqual(answer, result)
+
+        return
+
+    def test_length_n_missing_0(self):
+
+        n = random.randint(1, 100)
+        args = ([x for x in range(1, n + 1)],)
+        answer = 0
+
+        result = self._runner(args)
+
+        self.assertEqual(answer, result)
+
+        return
+
+    def test_length_n_missing_n(self):
+
+        n = random.randint(1, 100)
+        args = ([x for x in range(0, n)],)
+        answer = n
+
+        result = self._runner(args)
+
+        self.assertEqual(answer, result)
+
+        return
+
+    def test_example_1(self):
+
+        args = ([3, 0, 1],)
+        answer = 2
+
+        result = self._runner(args)
+
+        self.assertEqual(answer, result)
+
+        return
+
+    def test_example_2(self):
+
+        args = ([9, 6, 4, 2, 3, 5, 7, 0, 1],)
+        answer = 8
+
+        result = self._runner(args)
+
+        self.assertEqual(answer, result)
+
+        return
 
 
 class Solution:
@@ -72,31 +138,4 @@ class Solution:
 
 if __name__ == "__main__":
 
-    tests = [{
-        "args": ([],),
-        "answer": 0,
-    }, {
-        "args": ([0],),
-        "answer": 1,
-    }, {
-        "args": ([1],),
-        "answer": 0,
-    }, {
-        "args": ([3, 0, 1],),
-        "answer": 2,
-    }, {
-        "args": ([9, 6, 4, 2, 3, 5, 7, 0, 1],),
-        "answer": 8,
-    }]
-
-    solution = Solution()
-
-    for test in tests:
-
-        args = test["args"]
-        answer = test["answer"]
-
-        print("\n--- test case ---\n")
-        print(args)
-        print("expected:", answer)
-        print("returned:", solution.missingNumber(*args))
+    unittest.main(verbosity=2)
