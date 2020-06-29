@@ -60,13 +60,21 @@ class Solution:
 
     def isPalindrome(self, s: str) -> bool:
 
+        return self.isPalindrome__reversed(s)
+
+    def isPalindrome__reversed(self, s: str) -> bool:
+
         # Handle trivial cases.
         if len(s) < 2:
             return True
 
-        # Strip non-alphanumeric characters.
+        # Strip non-alphanumeric characters and ignore case.
+        s = "".join(c for c in s if c.isalnum()).lower()
 
-        return None
+        # Compare with reversed version.
+        result = (s == "".join(reversed(s)))
+
+        return result
 
 
 if __name__ == "__main__":
