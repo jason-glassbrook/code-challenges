@@ -73,7 +73,7 @@ class Solution:
 
     def missingNumber(self, nums: List[int]) -> int:
 
-        return self.missingNumber__xor(nums)
+        return self.missingNumber__hash_set(nums)
 
     def missingNumber__brute_force(self, nums: List[int]) -> int:
 
