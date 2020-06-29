@@ -7,7 +7,7 @@ class Solution:
 
     def missingNumber(self, nums: List[int]) -> int:
 
-        return self.missingNumber__hash_set(nums)
+        return self.missingNumber__xor(nums)
 
     def missingNumber__brute_force(self, nums: List[int]) -> int:
 
@@ -44,12 +44,22 @@ class Solution:
         return None
 
     def missingNumber__xor(self, nums: List[int]) -> int:
+        """
+        This method uses XOR to find the missing number.
+        I don't fully understand how it works, but it's clever.
+        It sort of "bubbles" out the bits for the missing number.
+        """
 
         if not nums:
             return None
 
+        # Construct the missing number:
+        missing = len(nums)
+        for (i, num) in enumerate(nums):
+            missing ^= i ^ num
+
         # Maybe nothing was missing?
-        return None
+        return (missing if missing != len(nums) else None)
 
     def missingNumber__sum(self, nums: List[int]) -> int:
 
