@@ -7,7 +7,7 @@ import random
 
 class TestSolution(unittest.TestCase):
 
-    def _runner(self, args):
+    def _run_solution(self, args):
 
         return Solution().missingNumber(*args)
 
@@ -16,9 +16,9 @@ class TestSolution(unittest.TestCase):
         args = ([],)
         answer = 0
 
-        result = self._runner(args)
+        result = self._run_solution(args)
 
-        self.assertEqual(answer, result)
+        self.assertEqual(result, answer)
 
         return
 
@@ -28,9 +28,9 @@ class TestSolution(unittest.TestCase):
         args = ([x for x in range(1, n + 1)],)
         answer = 0
 
-        result = self._runner(args)
+        result = self._run_solution(args)
 
-        self.assertEqual(answer, result)
+        self.assertEqual(result, answer)
 
         return
 
@@ -40,9 +40,9 @@ class TestSolution(unittest.TestCase):
         args = ([x for x in range(0, n)],)
         answer = n
 
-        result = self._runner(args)
+        result = self._run_solution(args)
 
-        self.assertEqual(answer, result)
+        self.assertEqual(result, answer)
 
         return
 
@@ -51,9 +51,9 @@ class TestSolution(unittest.TestCase):
         args = ([3, 0, 1],)
         answer = 2
 
-        result = self._runner(args)
+        result = self._run_solution(args)
 
-        self.assertEqual(answer, result)
+        self.assertEqual(result, answer)
 
         return
 
@@ -62,9 +62,9 @@ class TestSolution(unittest.TestCase):
         args = ([9, 6, 4, 2, 3, 5, 7, 0, 1],)
         answer = 8
 
-        result = self._runner(args)
+        result = self._run_solution(args)
 
-        self.assertEqual(answer, result)
+        self.assertEqual(result, answer)
 
         return
 
