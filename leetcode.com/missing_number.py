@@ -7,7 +7,7 @@ class Solution:
 
     def missingNumber(self, nums: List[int]) -> int:
 
-        return self.missingNumber__xor(nums)
+        return self.missingNumber__hash_set(nums)
 
     def missingNumber__brute_force(self, nums: List[int]) -> int:
 
@@ -62,12 +62,20 @@ class Solution:
         return (missing if missing != len(nums) else None)
 
     def missingNumber__sum(self, nums: List[int]) -> int:
+        """
+        I don't think this method can determine if zero is missing...
+        """
 
         if not nums:
             return None
 
+        # Compute the expected and actual sums.
+        expected_sum = len(nums) * (len(nums) + 1) // 2    # <- Gauss formula.
+        actual_sum = sum(nums)
+        missing = expected_sum - actual_sum
+
         # Maybe nothing was missing?
-        return None
+        return missing
 
 
 if __name__ == "__main__":
