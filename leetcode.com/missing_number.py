@@ -7,7 +7,7 @@ class Solution:
 
     def missingNumber(self, nums: List[int]) -> int:
 
-        return self.missingNumber__brute_force(nums)
+        return self.missingNumber__hash_set(nums)
 
     def missingNumber__brute_force(self, nums: List[int]) -> int:
 
@@ -31,6 +31,14 @@ class Solution:
 
         if not nums:
             return None
+
+        # Create a hash set of `nums`.
+        nums_set = set(nums)
+
+        # Check each number in the list:
+        for expected in range(0, len(nums)):
+            if expected not in nums_set:
+                return expected
 
         # Maybe nothing was missing?
         return None
