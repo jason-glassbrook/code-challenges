@@ -60,7 +60,21 @@ class Solution:
 
     def isPalindrome(self, s: str) -> bool:
 
-        return self.isPalindrome__reversed(s)
+        return self.isPalindrome__reverse_slice(s)
+
+    def isPalindrome__reverse_slice(self, s: str) -> bool:
+
+        # Handle trivial cases.
+        if len(s) < 2:
+            return True
+
+        # Strip non-alphanumeric characters and ignore case.
+        s = "".join(c for c in s if c.isalnum()).lower()
+
+        # Compare with reversed version.
+        result = (s == s[::-1])
+
+        return result
 
     def isPalindrome__reversed(self, s: str) -> bool:
 
