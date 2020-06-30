@@ -9,10 +9,52 @@ class TestSolution(unittest.TestCase):
     def _run_solution(self, args):
         return Solution().getSum(*args)
 
-    def test_sum(self):
+    def test_both_positive(self):
 
-        a = random.randint(0, 0xFFFFFFFF)
-        b = random.randint(0, 0xFFFFFFFF)
+        a = +random.randint(0, 0xFFFFFFFF)
+        b = +random.randint(0, 0xFFFFFFFF)
+
+        args = (a, b)
+        answer = (a + b)
+
+        result = self._run_solution(args)
+
+        self.assertEqual(result, answer)
+
+        return
+
+    def test_both_negative(self):
+
+        a = -random.randint(0, 0xFFFFFFFF)
+        b = -random.randint(0, 0xFFFFFFFF)
+
+        args = (a, b)
+        answer = (a + b)
+
+        result = self._run_solution(args)
+
+        self.assertEqual(result, answer)
+
+        return
+
+    def test_positive_a_negative_b(self):
+
+        a = +random.randint(0, 0xFFFFFFFF)
+        b = -random.randint(0, 0xFFFFFFFF)
+
+        args = (a, b)
+        answer = (a + b)
+
+        result = self._run_solution(args)
+
+        self.assertEqual(result, answer)
+
+        return
+
+    def test_negative_a_positive_b(self):
+
+        a = -random.randint(0, 0xFFFFFFFF)
+        b = +random.randint(0, 0xFFFFFFFF)
 
         args = (a, b)
         answer = (a + b)
@@ -80,4 +122,4 @@ class Solution:
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(verbosity=2)
