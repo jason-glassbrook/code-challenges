@@ -60,7 +60,7 @@ class Solution:
 
     def isPalindrome(self, s: str) -> bool:
 
-        return self.isPalindrome__recursive(s)
+        return self.isPalindrome__pointers(s)
 
     def isPalindrome__reverse_slice(self, s: str) -> bool:
 
