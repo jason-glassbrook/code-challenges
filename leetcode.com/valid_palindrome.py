@@ -60,7 +60,7 @@ class Solution:
 
     def isPalindrome(self, s: str) -> bool:
 
-        return self.isPalindrome__reverse_slice(s)
+        return self.isPalindrome__pointers(s)
 
     def isPalindrome__reverse_slice(self, s: str) -> bool:
 
@@ -89,6 +89,28 @@ class Solution:
         result = (s == "".join(reversed(s)))
 
         return result
+
+    def isPalindrome__pointers(self, s: str) -> bool:
+
+        # Handle trivial cases.
+        if len(s) < 2:
+            return True
+
+        # Strip non-alphanumeric characters and ignore case.
+        s = "".join(c for c in s if c.isalnum()).lower()
+
+        # Iterate from outside to center with left and right pointers.
+        # -   If the length is even, then when we reach the center,
+        #     then we've made it to the base/trivial case of a string of length 0.
+        # -   If the length is odd, then when we reach the center,
+        #     then we've made it to the base/trivial case of a string of length 1.
+        for i in range(0, len(s) // 2):
+            left = i    # (LEFTMOST + i) where LEFTMOST = 0
+            right = (-1 - i)    # (RIGHTMOST - i) where RIGHTMOST = len(s) - 1
+            if s[left] != s[right]:
+                return False
+
+        return True
 
 
 if __name__ == "__main__":
