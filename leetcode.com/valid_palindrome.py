@@ -60,7 +60,7 @@ class Solution:
 
     def isPalindrome(self, s: str) -> bool:
 
-        return self.isPalindrome__pointers(s)
+        return self.isPalindrome__recursive(s)
 
     def isPalindrome__reverse_slice(self, s: str) -> bool:
 
@@ -99,10 +99,10 @@ class Solution:
         # Strip non-alphanumeric characters and ignore case.
         s = "".join(c for c in s if c.isalnum()).lower()
 
-        # Iterate from outside to center with left and right pointers.
-        # -   If the length is even, then when we reach the center,
+        # Iterate from outside to middle with left and right pointers.
+        # -   If the length is even, then when we reach the middle,
         #     then we've made it to the base/trivial case of a string of length 0.
-        # -   If the length is odd, then when we reach the center,
+        # -   If the length is odd, then when we reach the middle,
         #     then we've made it to the base/trivial case of a string of length 1.
         for i in range(0, len(s) // 2):
             left = i    # (LEFTMOST + i) where LEFTMOST = 0
@@ -111,6 +111,42 @@ class Solution:
                 return False
 
         return True
+
+    def isPalindrome__recursive(self, s: str) -> bool:
+        """
+        Because why not?
+        """
+
+        # Handle trivial cases.
+        if len(s) < 2:
+            return True
+
+        # Strip non-alphanumeric characters and ignore case.
+        s = "".join(c for c in s if c.isalnum()).lower()
+
+        # Iterate from outside to middle with left and right pointers.
+        # -   If the length is even, then when we reach the middle,
+        #     then we've made it to the base/trivial case of a string of length 0.
+        # -   If the length is odd, then when we reach the middle,
+        #     then we've made it to the base/trivial case of a string of length 1.
+
+        middle = len(s) // 2
+
+        def compare_outside_to_inside(i: int) -> bool:
+
+            # Handle trivial cases.
+            if i >= middle:
+                return True
+
+            # Compare left and right.
+            elif s[i] != s[-1 - i]:
+                return False
+
+            # Continue.
+            else:
+                return compare_outside_to_inside(i + 1)
+
+        return compare_outside_to_inside(0)
 
 
 if __name__ == "__main__":
