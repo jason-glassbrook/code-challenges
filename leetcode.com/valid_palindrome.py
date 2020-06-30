@@ -69,7 +69,7 @@ class Solution:
             return True
 
         # Strip non-alphanumeric characters and ignore case.
-        s = "".join(c for c in s if c.isalnum()).lower()
+        s = "".join(c.lower() for c in s if c.isalnum())
 
         # Compare with reversed version.
         result = (s == s[::-1])
@@ -83,7 +83,7 @@ class Solution:
             return True
 
         # Strip non-alphanumeric characters and ignore case.
-        s = "".join(c for c in s if c.isalnum()).lower()
+        s = "".join(c.lower() for c in s if c.isalnum())
 
         # Compare with reversed version.
         result = (s == "".join(reversed(s)))
@@ -97,7 +97,7 @@ class Solution:
             return True
 
         # Strip non-alphanumeric characters and ignore case.
-        s = "".join(c for c in s if c.isalnum()).lower()
+        s = "".join(c.lower() for c in s if c.isalnum())
 
         # Iterate from outside to middle with left and right pointers.
         # -   If the length is even, then when we reach the middle,
@@ -122,7 +122,7 @@ class Solution:
             return True
 
         # Strip non-alphanumeric characters and ignore case.
-        s = "".join(c for c in s if c.isalnum()).lower()
+        s = "".join(c.lower() for c in s if c.isalnum())
 
         # Iterate from outside to middle with left and right pointers.
         # -   If the length is even, then when we reach the middle,
