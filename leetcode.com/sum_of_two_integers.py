@@ -70,6 +70,11 @@ class Solution:
 
     def getSum(self, a: int, b: int) -> int:
 
+        # Handle LeetCode's input limitations...
+        mask = 0xFFFFFFFF
+        a = a & mask
+        b = b & mask
+
         return self.getSum__bitwise_operations__recursive(a, b)
 
     def getSum__cheating(self, a: int, b: int) -> int:
