@@ -7,7 +7,67 @@ class Solution:
 
     def isAnagram(self, s1: str, s2: str) -> bool:
 
-        return random.choice([True, False])
+        return self.isAnagram__python_counter__equals_operator(s1, s2)
+
+    def isAnagram__python_counter__equals_operator(self, s1: str, s2: str) -> bool:
+        """
+        Solves "valid anagram" problem...
+        -   using Python's `collections.Counter`
+        -   using Python's equals operator `==`
+
+        This is the easiest way to solve this problem that I can think of.
+        """
+
+        from collections import Counter
+
+        #---------------------------------------
+
+        # If `s1` and `s2` aren't the same length, then they can't be anagrams.
+        if len(s1) != len(s2):
+            return False
+
+        # And then it's just...
+        return (Counter(s1) == Counter(s2))
+
+    def isAnagram__python_counter__comparing_keys(self, s1: str, s2: str) -> bool:
+        """
+        Solves "valid anagram" problem...
+        -   using Python's `collections.Counter`
+        -   by iteratively comparing the counts of keys
+        """
+
+        from collections import Counter
+
+        #---------------------------------------
+
+        # If `s1` and `s2` aren't the same length, then they can't be anagrams.
+        if len(s1) != len(s2):
+            return False
+
+        # Count the characters in `s1` and `s2`.
+        c1 = Counter(s1)
+        c2 = Counter(s2)
+
+        # If `c1` and `c2` don't have the same number of keys, then `s1` and `s2` can't be anagrams.
+        if len(c1) != len(c2):
+            return False
+
+        # Compare the counts of keys.
+        # -   Because `c1` and `c2` have the same number of keys,
+        #     they must share all letters (but not necessarily their counts)
+        #     or they have the same number of unique letters (but their letters are different).
+        for letter in c1.keys():
+            # Does `letter` occur in `s2`?
+            if letter in c2.keys():
+                # Does `letter` occur in `s1` and `s2` the same number of times?
+                if c1[letter] == c2[letter]:
+                    # 🥳 Move on to the next letter!
+                    continue
+
+            return False
+
+        # If we made it here, then `s1` and `s2` are anagrams!
+        return True
 
 
 ############################################################
