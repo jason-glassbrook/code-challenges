@@ -1,72 +1,6 @@
 #!python3
 
-import unittest
-import random
-
-
-class TestSolution(unittest.TestCase):
-
-    def _run_solution(self, args):
-        return Solution().getSum(*args, Solution.PYTHON__INT_MASK)
-
-    def test_both_positive(self):
-
-        a = +random.randint(0, 0xFFFFFFFF)
-        b = +random.randint(0, 0xFFFFFFFF)
-
-        args = (a, b)
-        answer = (a + b)
-
-        result = self._run_solution(args)
-
-        self.assertEqual(result, answer)
-
-        return
-
-    @unittest.skip("not sure how to deal with 32 bit ints")
-    def test_both_negative(self):
-
-        a = -random.randint(0, 0xFFFFFFFF)
-        b = -random.randint(0, 0xFFFFFFFF)
-
-        args = (a, b)
-        answer = (a + b)
-
-        result = self._run_solution(args)
-
-        self.assertEqual(result, answer)
-
-        return
-
-    @unittest.skip("not sure how to deal with 32 bit ints")
-    def test_positive_a_negative_b(self):
-
-        a = +random.randint(0, 0xFFFFFFFF)
-        b = -random.randint(0, 0xFFFFFFFF)
-
-        args = (a, b)
-        answer = (a + b)
-
-        result = self._run_solution(args)
-
-        self.assertEqual(result, answer)
-
-        return
-
-    @unittest.skip("not sure how to deal with 32 bit ints")
-    def test_negative_a_positive_b(self):
-
-        a = -random.randint(0, 0xFFFFFFFF)
-        b = +random.randint(0, 0xFFFFFFFF)
-
-        args = (a, b)
-        answer = (a + b)
-
-        result = self._run_solution(args)
-
-        self.assertEqual(result, answer)
-
-        return
+############################################################
 
 
 class Solution:
@@ -134,6 +68,79 @@ class Solution:
             carry=min(a, b),    # Initial "carry" -- min of a, b for fewer iterations
         )
 
+
+############################################################
+
+import unittest    # noqa: E402
+import random    # noqa: E402
+
+
+class TestSolution(unittest.TestCase):
+
+    def _run_solution(self, args):
+        return Solution().getSum(*args, Solution.PYTHON__INT_MASK)
+
+    def test_both_positive(self):
+
+        a = +random.randint(0, 0xFFFFFFFF)
+        b = +random.randint(0, 0xFFFFFFFF)
+
+        args = (a, b)
+        answer = (a + b)
+
+        result = self._run_solution(args)
+
+        self.assertEqual(result, answer)
+
+        return
+
+    @unittest.skip("not sure how to deal with 32 bit ints")
+    def test_both_negative(self):
+
+        a = -random.randint(0, 0xFFFFFFFF)
+        b = -random.randint(0, 0xFFFFFFFF)
+
+        args = (a, b)
+        answer = (a + b)
+
+        result = self._run_solution(args)
+
+        self.assertEqual(result, answer)
+
+        return
+
+    @unittest.skip("not sure how to deal with 32 bit ints")
+    def test_positive_a_negative_b(self):
+
+        a = +random.randint(0, 0xFFFFFFFF)
+        b = -random.randint(0, 0xFFFFFFFF)
+
+        args = (a, b)
+        answer = (a + b)
+
+        result = self._run_solution(args)
+
+        self.assertEqual(result, answer)
+
+        return
+
+    @unittest.skip("not sure how to deal with 32 bit ints")
+    def test_negative_a_positive_b(self):
+
+        a = -random.randint(0, 0xFFFFFFFF)
+        b = +random.randint(0, 0xFFFFFFFF)
+
+        args = (a, b)
+        answer = (a + b)
+
+        result = self._run_solution(args)
+
+        self.assertEqual(result, answer)
+
+        return
+
+
+############################################################
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

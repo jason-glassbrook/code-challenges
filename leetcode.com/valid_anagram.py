@@ -1,8 +1,20 @@
 #!python3
 
-import unittest
-import random
-import string
+############################################################
+
+
+class Solution:
+
+    def isAnagram(self, s1: str, s2: str) -> bool:
+
+        return random.choice([True, False])
+
+
+############################################################
+
+import unittest    # noqa: E402
+import random    # noqa: E402
+import string    # noqa: E402
 
 
 class TestSolution(unittest.TestCase):
@@ -95,12 +107,7 @@ class TestSolution(unittest.TestCase):
         return
 
 
-class Solution:
-
-    def isAnagram(self, s1: str, s2: str) -> bool:
-
-        return random.choice([True, False])
-
+############################################################
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

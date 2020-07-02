@@ -1,72 +1,8 @@
 #!python3
 
+############################################################
+
 from typing import List
-import unittest
-import random
-
-
-class TestSolution(unittest.TestCase):
-
-    def _run_solution(self, args):
-
-        return Solution().missingNumber(*args)
-
-    def test_empty_nums(self):
-
-        args = ([],)
-        answer = 0
-
-        result = self._run_solution(args)
-
-        self.assertEqual(result, answer)
-
-        return
-
-    def test_length_n_missing_0(self):
-
-        n = random.randint(1, 100)
-        args = ([x for x in range(1, n + 1)],)
-        answer = 0
-
-        result = self._run_solution(args)
-
-        self.assertEqual(result, answer)
-
-        return
-
-    def test_length_n_missing_n(self):
-
-        n = random.randint(1, 100)
-        args = ([x for x in range(0, n)],)
-        answer = n
-
-        result = self._run_solution(args)
-
-        self.assertEqual(result, answer)
-
-        return
-
-    def test_example_1(self):
-
-        args = ([3, 0, 1],)
-        answer = 2
-
-        result = self._run_solution(args)
-
-        self.assertEqual(result, answer)
-
-        return
-
-    def test_example_2(self):
-
-        args = ([9, 6, 4, 2, 3, 5, 7, 0, 1],)
-        answer = 8
-
-        result = self._run_solution(args)
-
-        self.assertEqual(result, answer)
-
-        return
 
 
 class Solution:
@@ -135,6 +71,78 @@ class Solution:
         # Maybe nothing was missing?
         return missing
 
+
+############################################################
+
+import unittest    # noqa: E402
+import random    # noqa: E402
+
+
+class TestSolution(unittest.TestCase):
+
+    def _run_solution(self, args):
+
+        return Solution().missingNumber(*args)
+
+    def test_empty_nums(self):
+
+        args = ([],)
+        answer = 0
+
+        result = self._run_solution(args)
+
+        self.assertEqual(result, answer)
+
+        return
+
+    def test_length_n_missing_0(self):
+
+        n = random.randint(1, 100)
+        args = ([x for x in range(1, n + 1)],)
+        answer = 0
+
+        result = self._run_solution(args)
+
+        self.assertEqual(result, answer)
+
+        return
+
+    def test_length_n_missing_n(self):
+
+        n = random.randint(1, 100)
+        args = ([x for x in range(0, n)],)
+        answer = n
+
+        result = self._run_solution(args)
+
+        self.assertEqual(result, answer)
+
+        return
+
+    def test_example_1(self):
+
+        args = ([3, 0, 1],)
+        answer = 2
+
+        result = self._run_solution(args)
+
+        self.assertEqual(result, answer)
+
+        return
+
+    def test_example_2(self):
+
+        args = ([9, 6, 4, 2, 3, 5, 7, 0, 1],)
+        answer = 8
+
+        result = self._run_solution(args)
+
+        self.assertEqual(result, answer)
+
+        return
+
+
+############################################################
 
 if __name__ == "__main__":
 
