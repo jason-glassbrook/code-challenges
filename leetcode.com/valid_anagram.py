@@ -72,7 +72,7 @@ class Solution:
     def isAnagram__python_defaultdict__equals_operator(self, s1: str, s2: str) -> bool:
         """
         Solves "valid anagram" problem...
-        -   using Python's `collections.DefaultDict` to build a custom counter
+        -   using Python's `collections.defaultdict` to build a custom counter dictionary
         -   using Python's equals operator `==`
         """
 
@@ -100,7 +100,7 @@ class Solution:
     def isAnagram__python_defaultdict__comparing_keys(self, s1: str, s2: str) -> bool:
         """
         Solves "valid anagram" problem...
-        -   using Python's `collections.DefaultDict` to build a custom counter
+        -   using Python's `collections.defaultdict` to build a custom counter dictionary
         -   by iteratively comparing the counts of keys
         """
 
