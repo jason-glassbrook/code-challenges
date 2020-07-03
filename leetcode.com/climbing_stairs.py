@@ -7,10 +7,48 @@ class Solution:
 
     def climbStairs(self, n: int) -> int:
 
-        return 1
+        return self.climbStairs__recursive__memoized(n)
 
+    def climbStairs__recursive__brute_force(self, n: int) -> int:
+        """
+        Computes the `n`th climbing stairs number (the `n`th Fibonacci number)...
+        -   recursively
+        -   by brute force
+        """
 
-############################################################
+        def r(i: int) -> int:
+
+            if i > n:
+                return 0
+            elif i == n:
+                return 1
+            else:
+                return (r(i + 1) + r(i + 2))
+
+        return r(0)
+
+    def climbStairs__recursive__memoized(self, n: int) -> int:
+        """
+        Computes the `n`th climbing stairs number (the `n`th Fibonacci number)...
+        -   recursively
+        -   with memoization (by closure)
+        """
+
+        memo = [0] * (n + 1)
+        memo[n] = 1
+
+        def r(i: int) -> int:
+
+            if i > n:
+                return 0
+            elif memo[i] > 0:
+                return memo[i]
+            else:
+                memo[i] = (r(i + 1) + r(i + 2))
+                return memo[i]
+
+        return r(0)
+
 
 ############################################################
 
