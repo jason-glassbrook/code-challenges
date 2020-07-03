@@ -7,7 +7,43 @@ class Solution:
 
     def climbStairs(self, n: int) -> int:
 
-        return self.climbStairs__recursive__memoized(n)
+        return self.climbStairs__iterative__trailing_terms(n)
+
+    def climbStairs__iterative__trailing_terms(self, n: int) -> int:
+        """
+        Computes the `n`th climbing stairs number (the `n`th Fibonacci number)...
+        -   iteratively
+        -   by tracking trailing terms
+        """
+
+        r_prev_prev = 0
+        r_prev = 0
+        r = 1
+
+        for i in range(1, n + 1):
+
+            r_prev_prev = r_prev
+            r_prev = r
+            r = r_prev + r_prev_prev
+
+        return r
+
+    def climbStairs__iterative__memoized(self, n: int) -> int:
+        """
+        Computes the `n`th climbing stairs number (the `n`th Fibonacci number)...
+        -   iteratively
+        -   by memoization (by dynamic programming)
+        """
+
+        r = [0] * max(2, n + 1)
+        r[0] = 1
+        r[1] = 1
+
+        for i in range(2, n + 1):
+
+            r[i] = r[i - 1] + r[i - 2]
+
+        return r[n]
 
     def climbStairs__recursive__brute_force(self, n: int) -> int:
         """
@@ -31,7 +67,7 @@ class Solution:
         """
         Computes the `n`th climbing stairs number (the `n`th Fibonacci number)...
         -   recursively
-        -   with memoization (by closure)
+        -   by memoization (by closure)
         """
 
         memo = [0] * (n + 1)
