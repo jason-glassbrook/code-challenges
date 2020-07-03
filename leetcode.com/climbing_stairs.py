@@ -20,6 +20,9 @@ import unittest    # noqa: E402
 class TestSolution(unittest.TestCase):
 
     EXAMPLES = [{
+        "args": [0],
+        "answer": 1,
+    }, {
         "args": [1],
         "answer": 1,
     }, {
@@ -37,6 +40,48 @@ class TestSolution(unittest.TestCase):
     }, {
         "args": [6],
         "answer": 13,
+    }, {
+        "args": [7],
+        "answer": 21,
+    }, {
+        "args": [8],
+        "answer": 34,
+    }, {
+        "args": [9],
+        "answer": 55,
+    }, {
+        "args": [10],
+        "answer": 89,
+    }, {
+        "args": [11],
+        "answer": 144,
+    }, {
+        "args": [12],
+        "answer": 233,
+    }, {
+        "args": [13],
+        "answer": 377,
+    }, {
+        "args": [14],
+        "answer": 610,
+    }, {
+        "args": [15],
+        "answer": 987,
+    }, {
+        "args": [16],
+        "answer": 1597,
+    }, {
+        "args": [17],
+        "answer": 2584,
+    }, {
+        "args": [18],
+        "answer": 4181,
+    }, {
+        "args": [19],
+        "answer": 6765,
+    }, {
+        "args": [20],
+        "answer": 10946,
     }]
 
     def _run_solution(self, args):
