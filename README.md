@@ -2,6 +2,6 @@
 
 Here are most of the code challenges that I've worked on.
 
--   [Codewars challenges](./codewars.com)
--   [HackerRank challenges](./hackerrank.com)
--   [LeetCode challenges](./leetcode.com)
+-   [Codewars challenges](./codewars)
+-   [HackerRank challenges](./hackerrank)
+-   [LeetCode challenges](./leetcode)
