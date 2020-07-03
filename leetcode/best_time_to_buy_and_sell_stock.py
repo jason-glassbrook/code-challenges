@@ -23,6 +23,39 @@ class TestSolution(unittest.TestCase):
 
         return Solution().maxProfit(*args)
 
+    def test_example_1(self):
+
+        args = [[7, 1, 5, 3, 6, 4]]
+        answer = 5
+
+        result = self._run_solution(args)
+
+        self.assertEqual(result, answer)
+
+        return
+
+    def test_example_2(self):
+
+        args = [[7, 6, 4, 3, 1]]
+        answer = 0
+
+        result = self._run_solution(args)
+
+        self.assertEqual(result, answer)
+
+        return
+
+    def test_empty_list(self):
+
+        args = [[]]
+        answer = 0
+
+        result = self._run_solution(args)
+
+        self.assertEqual(result, answer)
+
+        return
+
 
 ############################################################
 
