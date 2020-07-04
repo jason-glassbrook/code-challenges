@@ -75,7 +75,7 @@ class TestSolution(unittest.TestCase):
     def test_all_ascending_series(self):
 
         series = list(range(self._MIN_VALUE, self._MAX_VALUE + 1, +1))
-        answer = max(0, max(series) - min(series))
+        answer = max(0, series[-1] - series[0])
 
         result = self._run_solution(series)
 
@@ -86,7 +86,7 @@ class TestSolution(unittest.TestCase):
     def test_all_descending_series(self):
 
         series = list(range(self._MAX_VALUE, self._MIN_VALUE - 1, -1))
-        answer = max(0, min(series) - max(series))
+        answer = max(0, series[-1] - series[0])
 
         result = self._run_solution(series)
 
