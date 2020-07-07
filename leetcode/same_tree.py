@@ -2,41 +2,7 @@
 
 ############################################################
 
-from typing import Optional, Iterable
-
-
-# Definition for a binary tree node.
-class TreeNode:
-
-    def __init__(self, value=0, left=None, right=None):
-
-        self.value = value
-        self.left = left
-        self.right = right
-
-        return
-
-
-# Deserialize a tree.
-def tree_from_data(data: Optional[Iterable]):
-    """
-    Deserialize a binary tree from `data`, which should be of the form `[n, l, r]` or `None`,
-    -   where `n` is a scalar value,
-    -   where `l` and `r` may be `[n, l, r]`, scalar, or `None`.
-    """
-
-    def branch(value, left, right):
-
-        return TreeNode(
-            value,
-            branch(*left) if isinstance(left, Iterable) else left,
-            branch(*right) if isinstance(right, Iterable) else right,
-        )
-
-    return branch(*data) if isinstance(data, Iterable) else None
-
-
-############################################################
+from leetcode.tools.binary_tree import TreeNode
 
 
 class Solution:
@@ -49,25 +15,18 @@ class Solution:
 ############################################################
 
 import unittest    # noqa: E402
+from leetcode.tools import testing    # noqa: E402
+from leetcode.tools.binary_tree import tree_from_data    # noqa: E402
 
 
-class TestSolution(unittest.TestCase):
+class TestSolution(testing.TestSolution):
 
-    def _run_solution(self, *args):
-
-        return Solution().isSameTree(*args)
-
-    def _run_example(self, args, answer):
-
-        result = self._run_solution(*args)
-
-        self.assertEqual(result, answer)
-
-        return
+    SOLUTION_CLASS = Solution
+    SOLUTION_FUNCTION = "isSameTree"
 
     def test_example_1(self):
 
-        self._run_example(
+        self.run_example(
             args=[
                 tree_from_data([1, 2, 3]),
                 tree_from_data([1, 2, 3]),
@@ -79,7 +38,7 @@ class TestSolution(unittest.TestCase):
 
     def test_example_2(self):
 
-        self._run_example(
+        self.run_example(
             args=[
                 tree_from_data([1, 2, None]),
                 tree_from_data([1, None, 2]),
@@ -91,7 +50,7 @@ class TestSolution(unittest.TestCase):
 
     def test_example_3(self):
 
-        self._run_example(
+        self.run_example(
             args=[
                 tree_from_data([1, 2, 1]),
                 tree_from_data([1, 1, 2]),
