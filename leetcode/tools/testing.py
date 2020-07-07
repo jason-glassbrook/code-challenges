@@ -19,10 +19,11 @@ class TestSolution(unittest.TestCase):
 
         return function(*args)
 
-    def run_example(self, args, answer):
+    def run_test(self, args, answer, assertion="assertEqual"):
 
         result = self.run_solution(*args)
+        compare = getattr(self, assertion)
 
-        self.assertEqual(result, answer)
+        compare(result, answer)
 
         return

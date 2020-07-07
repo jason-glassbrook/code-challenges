@@ -15,6 +15,7 @@ class Solution:
 ############################################################
 
 import unittest    # noqa: E402
+
 from leetcode.tools import testing    # noqa: E402
 from leetcode.tools.binary_tree import tree_from_data    # noqa: E402
 
@@ -26,7 +27,7 @@ class TestSolution(testing.TestSolution):
 
     def test_example_1(self):
 
-        self.run_example(
+        return self.run_test(
             args=[
                 tree_from_data([1, 2, 3]),
                 tree_from_data([1, 2, 3]),
@@ -34,11 +35,9 @@ class TestSolution(testing.TestSolution):
             answer=True,
         )
 
-        return
-
     def test_example_2(self):
 
-        self.run_example(
+        return self.run_test(
             args=[
                 tree_from_data([1, 2, None]),
                 tree_from_data([1, None, 2]),
@@ -46,19 +45,15 @@ class TestSolution(testing.TestSolution):
             answer=False,
         )
 
-        return
-
     def test_example_3(self):
 
-        self.run_example(
+        return self.run_test(
             args=[
                 tree_from_data([1, 2, 1]),
                 tree_from_data([1, 1, 2]),
             ],
             answer=False,
         )
-
-        return
 
 
 ############################################################
