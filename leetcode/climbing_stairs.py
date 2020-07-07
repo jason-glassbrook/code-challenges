@@ -90,10 +90,15 @@ class Solution:
 
 import unittest    # noqa: E402
 
+from leetcode.tools import testing    # noqa: E402
 
-class TestSolution(unittest.TestCase):
 
-    EXAMPLES = [{
+class TestSolution(testing.TestSolution):
+
+    SOLUTION_CLASS = Solution
+    SOLUTION_FUNCTION = "climbStairs"
+
+    _EXAMPLES = [{
         "args": [0],
         "answer": 1,
     }, {
@@ -158,16 +163,11 @@ class TestSolution(unittest.TestCase):
         "answer": 10946,
     }]
 
-    def _run_solution(self, args):
-        return Solution().climbStairs(*args)
-
     def test_examples(self):
 
-        for example in self.EXAMPLES:
+        for example in self._EXAMPLES:
 
-            result = self._run_solution(example["args"])
-
-            self.assertEqual(result, example["answer"])
+            self.run_test(**example)
 
         return
 

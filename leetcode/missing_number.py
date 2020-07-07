@@ -77,69 +77,52 @@ class Solution:
 import unittest    # noqa: E402
 import random    # noqa: E402
 
+from leetcode.tools import testing    # noqa: E402
 
-class TestSolution(unittest.TestCase):
 
-    def _run_solution(self, args):
+class TestSolution(testing.TestSolution):
 
-        return Solution().missingNumber(*args)
+    SOLUTION_CLASS = Solution
+    SOLUTION_FUNCTION = "missingNumber"
+
+    def test_example_1(self):
+
+        return self.run_test(
+            args=[[3, 0, 1]],
+            answer=2,
+        )
+
+    def test_example_2(self):
+
+        return self.run_test(
+            args=[[9, 6, 4, 2, 3, 5, 7, 0, 1]],
+            answer=8,
+        )
 
     def test_empty_nums(self):
 
-        args = ([],)
-        answer = 0
-
-        result = self._run_solution(args)
-
-        self.assertEqual(result, answer)
-
-        return
+        return self.run_test(
+            args=[[]],
+            answer=0,
+        )
 
     def test_length_n_missing_0(self):
 
         n = random.randint(1, 100)
-        args = ([x for x in range(1, n + 1)],)
-        answer = 0
 
-        result = self._run_solution(args)
-
-        self.assertEqual(result, answer)
-
-        return
+        return self.run_test(
+            args=[[x for x in range(1, n + 1)]],
+            answer=0,
+        )
 
     def test_length_n_missing_n(self):
 
         n = random.randint(1, 100)
-        args = ([x for x in range(0, n)],)
-        answer = n
 
-        result = self._run_solution(args)
-
-        self.assertEqual(result, answer)
-
-        return
-
-    def test_example_1(self):
-
-        args = ([3, 0, 1],)
-        answer = 2
-
-        result = self._run_solution(args)
-
-        self.assertEqual(result, answer)
-
-        return
-
-    def test_example_2(self):
-
-        args = ([9, 6, 4, 2, 3, 5, 7, 0, 1],)
-        answer = 8
-
-        result = self._run_solution(args)
-
-        self.assertEqual(result, answer)
-
-        return
+        return self.run_test(
+            args=[[x for x in range(0, n)]],
+            answer=n,
+        )
 
 
 ############################################################

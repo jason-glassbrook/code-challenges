@@ -98,60 +98,47 @@ class Solution:
 
 ############################################################
 
+############################################################
+
 import unittest    # noqa: E402
 import random    # noqa: E402
 import string    # noqa: E402
 
+from leetcode.tools import testing    # noqa: E402
 
-class TestSolution(unittest.TestCase):
 
-    def _run_solution(self, args):
+class TestSolution(testing.TestSolution):
 
-        return Solution().isPalindrome(*args)
+    SOLUTION_CLASS = Solution
+    SOLUTION_FUNCTION = "isPalindrome"
 
     def test_length_0(self):
 
-        args = ("",)
-        answer = True
-
-        result = self._run_solution(args)
-
-        self.assertIs(result, answer)
-
-        return
+        return self.run_test(
+            args=[""],
+            answer=True,
+        )
 
     def test_length_1(self):
 
-        args = (random.choice(string.printable),)
-        answer = True
-
-        result = self._run_solution(args)
-
-        self.assertIs(result, answer)
-
-        return
+        return self.run_test(
+            args=[random.choice(string.printable)],
+            answer=True,
+        )
 
     def test_example_1(self):
 
-        args = ("A man, a plan, a canal: Panama",)
-        answer = True
-
-        result = self._run_solution(args)
-
-        self.assertIs(result, answer)
-
-        return
+        return self.run_test(
+            args=["A man, a plan, a canal: Panama"],
+            answer=True,
+        )
 
     def test_example_2(self):
 
-        args = ("race a car",)
-        answer = False
-
-        result = self._run_solution(args)
-
-        self.assertIs(result, answer)
-
-        return
+        return self.run_test(
+            args=["race a car"],
+            answer=False,
+        )
 
 
 ############################################################

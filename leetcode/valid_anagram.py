@@ -185,8 +185,13 @@ import unittest    # noqa: E402
 import random    # noqa: E402
 import string    # noqa: E402
 
+from leetcode.tools import testing    # noqa: E402
 
-class TestSolution(unittest.TestCase):
+
+class TestSolution(testing.TestSolution):
+
+    SOLUTION_CLASS = Solution
+    SOLUTION_FUNCTION = "isAnagram"
 
     def _random_string(self, length, alphabet=string.printable):
         return "".join(random.choice(alphabet) for i in range(length))
@@ -194,41 +199,26 @@ class TestSolution(unittest.TestCase):
     def _shuffle_string(self, original):
         return "".join(random.sample(original, len(original)))
 
-    def _run_solution(self, args):
-        return Solution().isAnagram(*args)
-
     def test_example_1(self):
 
-        args = ("anagram", "nagaram")
-        answer = True
-
-        result = self._run_solution(args)
-
-        self.assertIs(result, answer)
-
-        return
+        return self.run_test(
+            args=["anagram", "nagaram"],
+            answer=True,
+        )
 
     def test_example_2(self):
 
-        args = ("rat", "car")
-        answer = False
-
-        result = self._run_solution(args)
-
-        self.assertIs(result, answer)
-
-        return
+        return self.run_test(
+            args=["rat", "car"],
+            answer=False,
+        )
 
     def test_empty_strings(self):
 
-        args = ("", "")
-        answer = True
-
-        result = self._run_solution(args)
-
-        self.assertIs(result, answer)
-
-        return
+        return self.run_test(
+            args=["", ""],
+            answer=True,
+        )
 
     def test_strings_of_different_lengths(self):
 
@@ -236,14 +226,10 @@ class TestSolution(unittest.TestCase):
         s1 = self._random_string(n1)
         s2 = self._random_string(n2)
 
-        args = (s1, s2)
-        answer = False
-
-        result = self._run_solution(args)
-
-        self.assertIs(result, answer)
-
-        return
+        return self.run_test(
+            args=[s1, s2],
+            answer=False,
+        )
 
     def test_random_matching_strings(self):
 
@@ -251,14 +237,10 @@ class TestSolution(unittest.TestCase):
         s1 = self._random_string(n)
         s2 = self._shuffle_string(s1)
 
-        args = (s1, s2)
-        answer = True
-
-        result = self._run_solution(args)
-
-        self.assertIs(result, answer)
-
-        return
+        return self.run_test(
+            args=[s1, s2],
+            answer=True,
+        )
 
     def test_random_nonmatching_strings(self):
 
@@ -266,14 +248,10 @@ class TestSolution(unittest.TestCase):
         s1 = self._random_string(n, string.ascii_letters)
         s2 = self._random_string(n, string.digits)
 
-        args = (s1, s2)
-        answer = False
-
-        result = self._run_solution(args)
-
-        self.assertIs(result, answer)
-
-        return
+        return self.run_test(
+            args=[s1, s2],
+            answer=False,
+        )
 
 
 ############################################################

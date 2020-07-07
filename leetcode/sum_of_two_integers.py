@@ -74,70 +74,58 @@ class Solution:
 import unittest    # noqa: E402
 import random    # noqa: E402
 
+from leetcode.tools import testing    # noqa: E402
 
-class TestSolution(unittest.TestCase):
 
-    def _run_solution(self, args):
-        return Solution().getSum(*args, Solution.PYTHON__INT_MASK)
+class TestSolution(testing.TestSolution):
+
+    SOLUTION_CLASS = Solution
+    SOLUTION_FUNCTION = "getSum"
+
+    def run_solution(self, *args):
+        return super().run_solution(*args, Solution.PYTHON__INT_MASK)
+
+    def run_test(self, args):
+        return super().run_test(args, sum(args))
 
     def test_both_positive(self):
 
-        a = +random.randint(0, 0xFFFFFFFF)
-        b = +random.randint(0, 0xFFFFFFFF)
-
-        args = (a, b)
-        answer = (a + b)
-
-        result = self._run_solution(args)
-
-        self.assertEqual(result, answer)
-
-        return
+        return self.run_test(
+            args=[
+                +random.randint(0, 0xFFFFFFFF),
+                +random.randint(0, 0xFFFFFFFF),
+            ],
+        )
 
     @unittest.skip("not sure how to deal with 32 bit ints")
     def test_both_negative(self):
 
-        a = -random.randint(0, 0xFFFFFFFF)
-        b = -random.randint(0, 0xFFFFFFFF)
-
-        args = (a, b)
-        answer = (a + b)
-
-        result = self._run_solution(args)
-
-        self.assertEqual(result, answer)
-
-        return
+        return self.run_test(
+            args=[
+                -random.randint(0, 0xFFFFFFFF),
+                -random.randint(0, 0xFFFFFFFF),
+            ],
+        )
 
     @unittest.skip("not sure how to deal with 32 bit ints")
     def test_positive_a_negative_b(self):
 
-        a = +random.randint(0, 0xFFFFFFFF)
-        b = -random.randint(0, 0xFFFFFFFF)
-
-        args = (a, b)
-        answer = (a + b)
-
-        result = self._run_solution(args)
-
-        self.assertEqual(result, answer)
-
-        return
+        return self.run_test(
+            args=[
+                +random.randint(0, 0xFFFFFFFF),
+                -random.randint(0, 0xFFFFFFFF),
+            ],
+        )
 
     @unittest.skip("not sure how to deal with 32 bit ints")
     def test_negative_a_positive_b(self):
 
-        a = -random.randint(0, 0xFFFFFFFF)
-        b = +random.randint(0, 0xFFFFFFFF)
-
-        args = (a, b)
-        answer = (a + b)
-
-        result = self._run_solution(args)
-
-        self.assertEqual(result, answer)
-
-        return
+        return self.run_test(
+            args=[
+                -random.randint(0, 0xFFFFFFFF),
+                +random.randint(0, 0xFFFFFFFF),
+            ],
+        )
 
 
 ############################################################
