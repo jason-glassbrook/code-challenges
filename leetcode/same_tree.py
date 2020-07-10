@@ -7,6 +7,8 @@ from leetcode.tools.binary_tree import TreeNode
 
 class Solution:
 
+    MAIN = "isSameTree"
+
     def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
 
         return True
@@ -23,7 +25,7 @@ from leetcode.tools.binary_tree import tree_from_data    # noqa: E402
 class TestSolution(testing.TestSolution):
 
     SOLUTION_CLASS = Solution
-    SOLUTION_FUNCTION = "isSameTree"
+    SOLUTION_FUNCTION = Solution.MAIN
 
     def test_example_1(self):
 

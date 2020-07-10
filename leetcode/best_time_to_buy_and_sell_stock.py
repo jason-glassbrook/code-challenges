@@ -7,6 +7,8 @@ from typing import List
 
 class Solution:
 
+    MAIN = "maxProfit"
+
     def maxProfit(self, prices: List[int]) -> int:
 
         return 0
@@ -23,7 +25,7 @@ from leetcode.tools import testing    # noqa: E402
 class TestSolution(testing.TestSolution):
 
     SOLUTION_CLASS = Solution
-    SOLUTION_FUNCTION = "maxProfit"
+    SOLUTION_FUNCTION = Solution.MAIN
 
     _MIN_VALUE = 0
     _MAX_VALUE = 100
