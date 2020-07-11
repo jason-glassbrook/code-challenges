@@ -27,6 +27,26 @@ class TestSolution(testing.TestSolution):
     SOLUTION_CLASS = Solution
     SOLUTION_FUNCTION = Solution.MAIN
 
+    def example_1(self):
+
+        return self.run_test(
+            args=[
+                tree_from_data([3, [4, 1, 2], 5]),
+                tree_from_data([4, 1, 2]),
+            ],
+            answer=True,
+        )
+
+    def example_2(self):
+
+        return self.run_test(
+            args=[
+                tree_from_data([3, [4, 1, [2, 0, None]], 5]),
+                tree_from_data([4, 1, 2]),
+            ],
+            answer=False,
+        )
+
 
 ############################################################
 
