@@ -27,6 +27,15 @@ class TestSolution(testing.TestSolution):
     SOLUTION_CLASS = Solution
     SOLUTION_FUNCTION = Solution.MAIN
 
+    def example_1(self):
+
+        return self.run_test(
+            args=[
+                tree_from_data([3, [9, None, None], [20, 15, 7]]),
+            ],
+            answer=3,
+        )
+
 
 ############################################################
 
