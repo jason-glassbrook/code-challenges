@@ -11,7 +11,18 @@ class Solution:
 
     def maxProfit(self, prices: List[int]) -> int:
 
-        return 0
+        return self.maxProfit__brute_force(prices)
+
+    def maxProfit__brute_force(self, prices: List[int]) -> int:
+
+        max_profit = 0
+
+        for left in range(0, len(prices) - 1):
+            for right in range(left + 1, len(prices)):
+                this_profit = prices[right] - prices[left]
+                max_profit = max(this_profit, max_profit)
+
+        return max_profit
 
 
 ############################################################
