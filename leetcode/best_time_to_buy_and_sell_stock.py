@@ -16,9 +16,15 @@ class Solution:
     def maxProfit__brute_force(self, prices: List[int]) -> int:
 
         max_profit = 0
+        n = len(prices)
 
-        for left in range(0, len(prices) - 1):
-            for right in range(left + 1, len(prices)):
+        # We need at least 2 prices to make a sale.
+        if n < 2:
+            return max_profit
+
+        # Iterate through all combinations.
+        for left in range(0, n - 1):
+            for right in range(left + 1, n):
                 this_profit = prices[right] - prices[left]
                 max_profit = max(this_profit, max_profit)
 
@@ -56,11 +62,21 @@ class TestSolution(testing.TestSolution):
             answer=0,
         )
 
-    def test_empty_series(self):
+    def test_no_prices(self):
 
         return self.run_test(
             args=[[]],
             answer=0,
+        )
+
+    def test_only_one_price(self):
+
+        series = [random.randint(self._MIN_VALUE, self._MAX_VALUE)]
+        answer = 0
+
+        return self.run_test(
+            args=[series],
+            answer=answer,
         )
 
     def test_flat_series(self):
