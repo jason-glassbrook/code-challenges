@@ -25,8 +25,11 @@ class Solution:
         # Iterate through all combinations.
         for left in range(0, n - 1):
             for right in range(left + 1, n):
-                this_profit = prices[right] - prices[left]
-                max_profit = max(this_profit, max_profit)
+                # Choose the best profit so far.
+                max_profit = max(
+                    prices[right] - prices[left],
+                    max_profit,
+                )
 
         return max_profit
 
