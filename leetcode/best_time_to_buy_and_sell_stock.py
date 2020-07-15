@@ -11,7 +11,7 @@ class Solution:
 
     def maxProfit(self, prices: List[int]) -> int:
 
-        return self.maxProfit__brute_force(prices)
+        return self.maxProfit__tracking_buy_price(prices)
 
     def maxProfit__brute_force(self, prices: List[int]) -> int:
 
@@ -33,6 +33,36 @@ class Solution:
 
         return max_profit
 
+    def maxProfit__tracking_buy_price(self, prices: List[int]) -> int:
+
+        max_profit = 0
+        n = len(prices)
+
+        # We need at least 2 prices to make a sale.
+        if n < 2:
+            return max_profit
+
+        # Track the best buy price.
+        buy_price = prices[0]
+
+        # Iterate through combinations involving tracked `buy_price`.
+        for this_price in prices[1 ::]:
+
+            # If we find a lower price than `buy_price`, then...
+            # -   Replace `buy_price`.
+            # -   We can't make a *profit* here, so skip to next price.
+            if this_price < buy_price:
+                buy_price = this_price
+                continue
+
+            # Choose the best profit so far.
+            max_profit = max(
+                this_price - buy_price,
+                max_profit,
+            )
+
+        return max_profit
+
 
 ############################################################
 
@@ -48,8 +78,8 @@ class TestSolution(testing.TestSolution):
     SOLUTION_FUNCTION = Solution.MAIN
 
     _MIN_VALUE = 0
-    _MAX_VALUE = 100
-    _LENGTH = 10
+    _MAX_VALUE = 1000
+    _LENGTH = 1000
 
     def test_example_1(self):
 
