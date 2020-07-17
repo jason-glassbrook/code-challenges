@@ -57,6 +57,16 @@ class TestSolution(testing.TestSolution):
             answer=False,
         )
 
+    def test_empty_trees(self):
+
+        return self.run_test(
+            args=[
+                tree_from_data([]),
+                tree_from_data([]),
+            ],
+            answer=True,
+        )
+
 
 ############################################################
 
