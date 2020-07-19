@@ -34,8 +34,9 @@ def tree_from_data(data: Optional[Iterable]):
 
         return TreeNode(
             val,
-            convert_data_to_tree(*left) if isinstance(left, Iterable) else left,
-            convert_data_to_tree(*right) if isinstance(right, Iterable) else right,
+            convert_data_to_tree(*left) if isinstance(left, Iterable) else TreeNode(left),
+            convert_data_to_tree(*right)
+            if isinstance(right, Iterable) else TreeNode(right),
         )
 
-    return convert_data_to_tree(*data) if isinstance(data, Iterable) else None
+    return convert_data_to_tree(*data) if data and isinstance(data, Iterable) else None
