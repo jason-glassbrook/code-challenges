@@ -2,6 +2,7 @@
 
 ############################################################
 
+from typing import Optional
 from leetcode.tools.binary_tree import TreeNode
 
 
@@ -13,30 +14,48 @@ class Solution:
 
         return self.isSameTree__recursive(p, q)
 
+    ############################################################
+    #   Strategies
+    ############################################################
+
     def isSameTree__recursive(self, p: TreeNode, q: TreeNode) -> bool:
 
         def test_branch(p: TreeNode, q: TreeNode) -> bool:
 
-            # If both are empty trees, they are the same.
-            if not p and not q:
-                return True
+            result = self.is_same_branch(p, q)
 
-            # Now, if only one is empty, they are not the same.
-            # If we got here, then we ruled out both being empty.
-            if not p or not q:
-                return False
+            if result is not None:
+                return result
 
-            # Now, both must be non-empty...
-
-            # If their values are not equal, they are not the same. (Duh!)
-            if p.val != q.val:
-                return False
-
-            # We must test if both their left and right branches are equal.
             else:
                 return test_branch(p.left, q.left) and test_branch(p.right, q.right)
 
         return test_branch(p, q)
+
+    ############################################################
+    #   Common Tools
+    ############################################################
+
+    def is_same_branch(self, p: TreeNode, q: TreeNode) -> Optional[bool]:
+
+        # If both are empty trees, they are the same.
+        if not p and not q:
+            return True
+
+        # Now, if only one is empty, they are not the same.
+        # If we got here, then we ruled out both being empty.
+        if not p or not q:
+            return False
+
+        # Now, both must be non-empty...
+
+        # If their values are not equal, they are not the same. (Duh!)
+        if p.val != q.val:
+            return False
+
+        # Inconclusive.
+        # We must test if both their left and right branches are equal.
+        return None
 
 
 ############################################################
