@@ -19,6 +19,11 @@ class Solution:
     ############################################################
 
     def isSameTree__recursive(self, p: TreeNode, q: TreeNode) -> bool:
+        """
+        Solution to "is same tree" that...
+        -   Uses recursion.
+        -   Performs a depth-first comparision of the trees (because the call stack is depth-first).
+        """
 
         def test_branch(p: TreeNode, q: TreeNode) -> bool:
 
