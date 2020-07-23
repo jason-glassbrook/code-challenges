@@ -12,7 +12,7 @@ class Solution:
 
     def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
 
-        return self.isSameTree__iterative__depth_first(p, q)
+        return self.isSameTree__iterative__breadth_first(p, q)
 
     ############################################################
     #   Strategies
@@ -60,6 +60,32 @@ class Solution:
             elif result is None:
                 stack.append((p.left, q.left))
                 stack.append((p.right, q.right))
+
+        return True
+
+    def isSameTree__iterative__breadth_first(self, p: TreeNode, q: TreeNode) -> bool:
+        """
+        Solution to "is same tree" that...
+        -   Uses iteration.
+        -   Performs a depth-first comparision of the trees by with a queue.
+        """
+
+        from collections import deque as Deck
+
+        queue = Deck([(p, q)])
+
+        while queue:
+
+            p, q = queue.popleft()
+
+            result = self.is_same_branch(p, q)
+
+            if result is False:
+                return result
+
+            elif result is None:
+                queue.append((p.left, q.left))
+                queue.append((p.right, q.right))
 
         return True
 
