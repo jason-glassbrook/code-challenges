@@ -89,6 +89,56 @@ class TestTreeNode(unittest.TestCase):
 
 
 ############################################################
+#   Test `TreeNode`
+############################################################
+
+
+class TestTreeFromData(unittest.TestCase):
+
+    def test_tree_data_of_None_gives_root_None(self):
+
+        root = tree_from_data(None)
+
+        self.assertIs(root, None)
+
+        return
+
+    def test_node_data_of_None_gives_node_None(self):
+
+        node__data = None
+
+        root = tree_from_data([node__data])
+
+        self.assertIs(root, None)
+
+        return
+
+    def test_left_data_of_None_gives_left_None(self):
+
+        node__data = _random_val()
+        left__data = None
+        right__data = _random_val()
+
+        root = tree_from_data([node__data, left__data, right__data])
+
+        self.assertIs(root.left, None)
+
+        return
+
+    def test_right_data_of_None_gives_right_None(self):
+
+        node__data = _random_val()
+        left__data = _random_val()
+        right__data = None
+
+        root = tree_from_data([node__data, left__data, right__data])
+
+        self.assertIs(root.right, None)
+
+        return
+
+
+############################################################
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
