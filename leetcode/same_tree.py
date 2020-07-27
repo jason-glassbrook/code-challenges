@@ -67,7 +67,7 @@ class Solution:
         """
         Solution to "is same tree" that...
         -   Uses iteration.
-        -   Performs a depth-first comparision of the trees by with a queue.
+        -   Performs a breadth-first comparision of the trees by with a queue.
         """
 
         from collections import deque as Deck
