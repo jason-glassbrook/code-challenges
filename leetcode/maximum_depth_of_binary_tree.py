@@ -57,10 +57,27 @@ class Solution:
         """
         Solution to "maximum depth of binary tree" that...
         -   Uses iteration.
-        -   Visits nodes in a depth-first order.
+        -   Visits nodes in a depth-first order by using a stack.
         """
 
-        pass
+        from collections import deque as Deck
+
+        max_depth = 0
+        stack = Deck([(root, 1)])
+
+        while stack:
+
+            node, depth = stack.pop()
+
+            if node:
+
+                max_depth = max(max_depth, depth)
+
+                next_depth = depth + 1
+                stack.append((node.left, next_depth))
+                stack.append((node.right, next_depth))
+
+        return max_depth
 
     def maxDepth__iterative__breadth_first(self, root: TreeNode) -> int:
         """
