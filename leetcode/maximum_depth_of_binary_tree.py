@@ -14,6 +14,11 @@ class Solution:
         return self.maxDepth__recursive__drilling(root)
 
     def maxDepth__recursive__adding(self, root: TreeNode) -> int:
+        """
+        Solution to "maximum depth of binary tree" that...
+        -   Uses recursion.
+        -   Adds recursively found depths with base case of 0.
+        """
 
         def get_depth_of_branch(node: TreeNode) -> int:
 
@@ -29,6 +34,11 @@ class Solution:
         return get_depth_of_branch(root)
 
     def maxDepth__recursive__drilling(self, root: TreeNode) -> int:
+        """
+        Solution to "maximum depth of binary tree" that...
+        -   Uses recursion.
+        -   "Drills" the current depth into each branch and adds to it if more nodes are found.
+        """
 
         def get_depth_of_branch(node: TreeNode, depth: int = 0) -> int:
 
