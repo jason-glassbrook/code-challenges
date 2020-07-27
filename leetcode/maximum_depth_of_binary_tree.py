@@ -11,7 +11,7 @@ class Solution:
 
     def maxDepth(self, root: TreeNode) -> int:
 
-        return self.maxDepth__recursive__adding(root)
+        return self.maxDepth__iterative__depth_first(root)
 
     def maxDepth__recursive__adding(self, root: TreeNode) -> int:
         """
