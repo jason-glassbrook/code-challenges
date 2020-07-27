@@ -53,6 +53,24 @@ class Solution:
 
         return get_depth_of_branch(root, 0)
 
+    def maxDepth__iterative__depth_first(self, root: TreeNode) -> int:
+        """
+        Solution to "maximum depth of binary tree" that...
+        -   Uses iteration.
+        -   Visits nodes in a depth-first order.
+        """
+
+        pass
+
+    def maxDepth__iterative__breadth_first(self, root: TreeNode) -> int:
+        """
+        Solution to "maximum depth of binary tree" that...
+        -   Uses iteration.
+        -   Visits nodes in a breadth-first order.
+        """
+
+        pass
+
 
 ############################################################
 
