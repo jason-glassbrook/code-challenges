@@ -22,14 +22,20 @@ class Solution:
 
         def get_depth_of_branch(node: TreeNode) -> int:
 
-            if node is None:
-                return 0
+            depth_of_left = depth_of_right = 0
 
-            depth_of_left = get_depth_of_branch(node.left)
-            depth_of_right = get_depth_of_branch(node.right)
+            if node.left:
+                depth_of_left = get_depth_of_branch(node.left)
+
+            if node.right:
+                depth_of_right = get_depth_of_branch(node.right)
+
             depth_of_branch = 1 + max(depth_of_left, depth_of_right)
 
             return depth_of_branch
+
+        if not root:
+            return 0
 
         return get_depth_of_branch(root)
 
@@ -40,16 +46,22 @@ class Solution:
         -   "Drills" the current depth into each branch and adds to it if more nodes are found.
         """
 
-        def get_depth_of_branch(node: TreeNode, depth: int = 0) -> int:
+        def get_depth_of_branch(node: TreeNode, depth: int) -> int:
 
-            if node is None:
-                return depth
+            depth_of_left = depth_of_right = depth
 
-            depth_of_left = get_depth_of_branch(node.left, depth)
-            depth_of_right = get_depth_of_branch(node.right, depth)
+            if node.left:
+                depth_of_left = get_depth_of_branch(node.left, depth)
+
+            if node.right:
+                depth_of_right = get_depth_of_branch(node.right, depth)
+
             depth_of_branch = 1 + max(depth_of_left, depth_of_right)
 
             return depth_of_branch
+
+        if not root:
+            return 0
 
         return get_depth_of_branch(root, 0)
 
@@ -63,19 +75,24 @@ class Solution:
         from collections import deque as Deck
 
         max_depth = 0
+
+        if not root:
+            return max_depth
+
         stack = Deck([(root, 1)])
 
         while stack:
 
             node, depth = stack.pop()
+            next_depth = depth + 1
 
-            if node:
-
-                max_depth = max(max_depth, depth)
-
-                next_depth = depth + 1
+            if node.left:
                 stack.append((node.left, next_depth))
+
+            if node.right:
                 stack.append((node.right, next_depth))
+
+            max_depth = max(max_depth, depth)
 
         return max_depth
 
@@ -89,19 +106,24 @@ class Solution:
         from collections import deque as Deck
 
         max_depth = 0
+
+        if not root:
+            return max_depth
+
         queue = Deck([(root, 1)])
 
         while queue:
 
             node, depth = queue.popleft()
+            next_depth = depth + 1
 
-            if node:
-
-                max_depth = max(max_depth, depth)
-
-                next_depth = depth + 1
+            if node.left:
                 queue.append((node.left, next_depth))
+
+            if node.right:
                 queue.append((node.right, next_depth))
+
+            max_depth = max(max_depth, depth)
 
         return max_depth
 
