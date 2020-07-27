@@ -27,7 +27,7 @@ class TestSolution(testing.TestSolution):
     SOLUTION_CLASS = Solution
     SOLUTION_FUNCTION = Solution.MAIN
 
-    def example_1(self):
+    def test_example_1(self):
 
         return self.run_test(
             args=[
@@ -38,7 +38,7 @@ class TestSolution(testing.TestSolution):
             answer=6,
         )
 
-    def example_2(self):
+    def test_example_2(self):
 
         return self.run_test(
             args=[
