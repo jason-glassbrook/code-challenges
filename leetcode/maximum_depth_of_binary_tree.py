@@ -20,8 +20,8 @@ class Solution:
             if node is None:
                 return 0
 
-            depth_of_left = get_depth_of_branch(node.left) if node.left else 0
-            depth_of_right = get_depth_of_branch(node.right) if node.right else 0
+            depth_of_left = get_depth_of_branch(node.left)
+            depth_of_right = get_depth_of_branch(node.right)
             depth_of_branch = 1 + max(depth_of_left, depth_of_right)
 
             return depth_of_branch
