@@ -4,6 +4,8 @@
 
 from leetcode.tools.binary_tree import TreeNode
 
+#-----------------------------------------------------------
+
 
 class Solution:
 
@@ -20,6 +22,8 @@ import unittest    # noqa: E402
 
 from leetcode.tools import testing    # noqa: E402
 from leetcode.tools.binary_tree import tree_from_data    # noqa: E402
+
+#-----------------------------------------------------------
 
 
 class TestSolution(testing.TestSolution):
