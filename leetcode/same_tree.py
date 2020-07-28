@@ -2,7 +2,7 @@
 
 ############################################################
 
-from typing import Optional
+from typing import Union
 from leetcode.tools.binary_tree import TreeNode
 
 
@@ -25,7 +25,10 @@ class Solution:
         -   Performs a depth-first comparision of the trees (because the call stack is depth-first).
         """
 
-        def test_branch(p: TreeNode, q: TreeNode) -> bool:
+        def test_branch(
+            p: Union[TreeNode, None],
+            q: Union[TreeNode, None],
+        ) -> bool:
 
             result = self.is_same_branch(p, q)
 
@@ -93,7 +96,11 @@ class Solution:
     #   Common Tools
     ############################################################
 
-    def is_same_branch(self, p: TreeNode, q: TreeNode) -> Optional[bool]:
+    def is_same_branch(
+        self,
+        p: Union[TreeNode, None],
+        q: Union[TreeNode, None],
+    ) -> Union[bool, None]:
 
         # If both are empty trees, they are the same.
         if not p and not q:

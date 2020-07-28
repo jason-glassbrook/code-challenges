@@ -5,10 +5,9 @@
 from typing import (
     Any,
     Type,
+    Union,
     Callable,
     Iterable,
-    Union,
-    Optional,
 )
 import unittest
 
@@ -39,11 +38,11 @@ class TestSolution(unittest.TestCase):
         args: Iterable,
         answer: Any,
         assertion: Union[Callable, str, None] = None,
-        assertion__rest: Optional[Iterable] = None,
-        transform_result: Optional[Callable] = None,
-        transform_result__rest: Optional[Iterable] = None,
-        transform_answer: Optional[Callable] = None,
-        transform_answer__rest: Optional[Iterable] = None,
+        assertion__rest: Union[Iterable, None] = None,
+        transform_result: Union[Callable, None] = None,
+        transform_result__rest: Union[Iterable, None] = None,
+        transform_answer: Union[Callable, None] = None,
+        transform_answer__rest: Union[Iterable, None] = None,
     ) -> Any:
 
         #---------------------------------------

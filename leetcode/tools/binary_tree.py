@@ -3,7 +3,7 @@
 ############################################################
 
 from typing import (
-    Optional,
+    Union,
     Iterable,
 )
 
@@ -23,21 +23,21 @@ class TreeNode:
 
 
 # Deserialize a binary tree.
-def tree_from_data(data: Optional[Iterable]) -> Optional[TreeNode]:
+def tree_from_data(data: Union[Iterable, None]) -> Union[TreeNode, None]:
     """
     Deserialize a binary tree from `data`, which should be of the form `[n, l, r]` or `None`,
     -   where `n` is a scalar value,
     -   where `l` and `r` may be `[n, l, r]`, scalar, or `None`.
     """
 
-    def convert_scalar_data(scalar_data) -> Optional[TreeNode]:
+    def convert_scalar_data(scalar_data) -> Union[TreeNode, None]:
 
         if scalar_data is None:
             return None
 
         return TreeNode(val=scalar_data)
 
-    def convert_list_data(list_data: Iterable) -> Optional[TreeNode]:
+    def convert_list_data(list_data: Iterable) -> Union[TreeNode, None]:
 
         n = len(list_data)
         node = None
@@ -62,7 +62,7 @@ def tree_from_data(data: Optional[Iterable]) -> Optional[TreeNode]:
 
         return node
 
-    def convert_data(data) -> Optional[TreeNode]:
+    def convert_data(data) -> Union[TreeNode, None]:
 
         if isinstance(data, Iterable):
             return convert_list_data(data)
