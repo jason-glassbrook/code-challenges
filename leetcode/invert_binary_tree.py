@@ -15,7 +15,7 @@ class Solution:
 
     def invertTree(self, root: TreeNode) -> TreeNode:
 
-        return self.invertTree__iterative__depth_first(root)
+        return self.invertTree__iterative__breadth_first(root)
 
     def invertTree__recursive(self, root: TreeNode) -> TreeNode:
         """
