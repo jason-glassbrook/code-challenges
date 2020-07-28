@@ -69,7 +69,7 @@ class Solution:
             # [Otherwise, we could use a temporary variable.]
             (node.left, node.right) = (node.right, node.left)
 
-            # Put branches in stack, if they're truthy...
+            # Put branches in stack, but only if they're truthy...
             if node.left:
                 stack.append(node.left)
 
@@ -103,7 +103,7 @@ class Solution:
             # [Otherwise, we could use a temporary variable.]
             (node.left, node.right) = (node.right, node.left)
 
-            # Put branches in queue, if they're truthy...
+            # Put branches in queue, but only if they're truthy...
             if node.left:
                 queue.append(node.left)
 
