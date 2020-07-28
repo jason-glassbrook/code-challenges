@@ -2,6 +2,8 @@
 
 ############################################################
 
+from typing import Union
+
 from leetcode.tools.binary_tree import TreeNode
 
 
@@ -11,12 +13,38 @@ class Solution:
 
     def invertTree(self, root: TreeNode) -> TreeNode:
 
-        pass
+        return self.invertTree__recursive(root)
+
+    def invertTree__recursive(self, root: TreeNode) -> TreeNode:
+        """
+        Solution to "invert binary tree" that...
+        -   Uses recursion.
+        """
+
+        # I personally like using local functions instead of `self.<function>`
+        def invert_tree(node: Union[TreeNode, None]) -> Union[TreeNode, None]:
+
+            if node:
+
+                # Swap the left and right branches.
+                # We must perform a simultaneous swap or else overwrite a branch.
+                # [Otherwise, we could use a temporary variable.]
+                (
+                    node.left,
+                    node.right,
+                ) = (
+                    invert_tree(node.right),
+                    invert_tree(node.left),
+                )
+
+            return node
+
+        # Use our local function.
+        return invert_tree(root)
 
 
 ############################################################
 
-from typing import Optional    # noqa: E402
 import unittest    # noqa: E402
 
 from leetcode.tools import testing    # noqa: E402
@@ -34,8 +62,8 @@ class TestSolution(testing.TestSolution):
 
     def run_test__is_same_tree(
         self,
-        p: Optional[TreeNode],
-        q: Optional[TreeNode],
+        p: Union[TreeNode, None],
+        q: Union[TreeNode, None],
         answer: bool = True,
     ):
 
