@@ -50,7 +50,7 @@ class TestSolution(testing.TestSolution):
 
         return self.run_test__is_same_tree(
             tree_from_data([4, [2, 1, 3], [7, 6, 9]]),
-            tree_from_data([4, [7, 6, 9], [2, 3, 1]]),
+            tree_from_data([4, [7, 9, 6], [2, 3, 1]]),
         )
 
     def test_empty_tree(self):
