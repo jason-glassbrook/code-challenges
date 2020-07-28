@@ -6,6 +6,8 @@ from typing import Union
 
 from leetcode.tools.binary_tree import TreeNode
 
+#-----------------------------------------------------------
+
 
 class Solution:
 
@@ -52,6 +54,8 @@ from leetcode.tools.binary_tree import tree_from_data    # noqa: E402
 
 from .same_tree import Solution as SameTreeSolution    # noqa: E402
 
+#-----------------------------------------------------------
+
 
 class TestSolution(testing.TestSolution):
 
@@ -77,8 +81,16 @@ class TestSolution(testing.TestSolution):
     def test_example_1(self):
 
         return self.run_test__is_same_tree(
-            tree_from_data([4, [2, 1, 3], [7, 6, 9]]),
-            tree_from_data([4, [7, 9, 6], [2, 3, 1]]),
+            tree_from_data([
+                4,
+                [2, 1, 3],
+                [7, 6, 9],
+            ]),
+            tree_from_data([
+                4,
+                [7, 9, 6],
+                [2, 3, 1],
+            ]),
         )
 
     def test_empty_tree(self):
@@ -91,15 +103,61 @@ class TestSolution(testing.TestSolution):
     def test_tree_of_depth_1(self):
 
         return self.run_test__is_same_tree(
-            tree_from_data([1, None, None]),
-            tree_from_data([1, None, None]),
+            tree_from_data(["A", None, None]),
+            tree_from_data(["A", None, None]),
         )
 
     def test_tree_of_depth_2(self):
 
         return self.run_test__is_same_tree(
-            tree_from_data([2, 1, 3]),
-            tree_from_data([2, 3, 1]),
+            tree_from_data(["A", "B", "C"]),
+            tree_from_data(["A", "C", "B"]),
+        )
+
+    def test_tree_of_depth_3(self):
+
+        return self.run_test__is_same_tree(
+            tree_from_data([
+                "A",
+                ["B", "D", "E"],
+                ["C", "F", "G"],
+            ]),
+            tree_from_data([
+                "A",
+                ["C", "G", "F"],
+                ["B", "E", "D"],
+            ]),
+        )
+
+    def test_tree_of_depth_4(self):
+
+        return self.run_test__is_same_tree(
+            tree_from_data([
+                "A",
+                [
+                    "B",
+                    ["D", "H", "I"],
+                    ["E", "J", "K"],
+                ],
+                [
+                    "C",
+                    ["F", "L", "M"],
+                    ["G", "N", "O"],
+                ],
+            ]),
+            tree_from_data([
+                "A",
+                [
+                    "C",
+                    ["G", "O", "N"],
+                    ["F", "M", "L"],
+                ],
+                [
+                    "B",
+                    ["E", "K", "J"],
+                    ["D", "I", "H"],
+                ],
+            ]),
         )
 
 
