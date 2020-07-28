@@ -84,6 +84,46 @@ class Solution:
 
         return root
 
+    def invertTree__iterative__breadth_first(self, root: TreeNode) -> TreeNode:
+        """
+        Solution to "invert binary tree" that...
+        -   Uses iteration.
+        -   Visits nodes in a breadth-first order by using a queue.
+        """
+
+        from collections import deque as Deck
+
+        # If `root` is falsy, we can skip everything.
+        if not root:
+            return root
+
+        queue = Deck([root])
+
+        while queue:
+
+            # Pop!
+            node = queue.popleft()
+
+            # Swap the left and right branches.
+            # We must perform a simultaneous swap or else overwrite a branch.
+            # [Otherwise, we could use a temporary variable.]
+            (
+                node.left,
+                node.right,
+            ) = (
+                node.right,
+                node.left,
+            )
+
+            # Put branches in queue, if they're truthy...
+            if node.left:
+                queue.append(node.left)
+
+            if node.right:
+                queue.append(node.right)
+
+        return root
+
 
 ############################################################
 
