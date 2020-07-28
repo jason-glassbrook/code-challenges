@@ -11,7 +11,7 @@ from typing import (
 )
 import unittest
 
-############################################################
+#-----------------------------------------------------------
 
 
 def getattr_of_instance(some_class: Type, attr_name: str) -> Any:

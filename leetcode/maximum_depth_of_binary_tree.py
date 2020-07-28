@@ -4,6 +4,8 @@
 
 from leetcode.tools.binary_tree import TreeNode
 
+#-----------------------------------------------------------
+
 
 class Solution:
 
@@ -74,6 +76,8 @@ class Solution:
 
         from collections import deque as Deck
 
+        #---------------------------------------
+
         max_depth = 0
 
         if not root:
@@ -105,6 +109,8 @@ class Solution:
 
         from collections import deque as Deck
 
+        #---------------------------------------
+
         max_depth = 0
 
         if not root:
@@ -134,6 +140,8 @@ import unittest    # noqa: E402
 
 from leetcode.tools import testing    # noqa: E402
 from leetcode.tools.binary_tree import tree_from_data    # noqa: E402
+
+#-----------------------------------------------------------
 
 
 class TestSolution(testing.TestSolution):

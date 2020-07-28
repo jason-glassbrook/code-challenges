@@ -76,6 +76,8 @@ import random    # noqa: E402
 
 from leetcode.tools import testing    # noqa: E402
 
+#-----------------------------------------------------------
+
 
 class TestSolution(testing.TestSolution):
 
