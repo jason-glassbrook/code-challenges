@@ -67,13 +67,7 @@ class Solution:
             # Swap the left and right branches.
             # We must perform a simultaneous swap or else overwrite a branch.
             # [Otherwise, we could use a temporary variable.]
-            (
-                node.left,
-                node.right,
-            ) = (
-                node.right,
-                node.left,
-            )
+            (node.left, node.right) = (node.right, node.left)
 
             # Put branches in stack, if they're truthy...
             if node.left:
@@ -107,13 +101,7 @@ class Solution:
             # Swap the left and right branches.
             # We must perform a simultaneous swap or else overwrite a branch.
             # [Otherwise, we could use a temporary variable.]
-            (
-                node.left,
-                node.right,
-            ) = (
-                node.right,
-                node.left,
-            )
+            (node.left, node.right) = (node.right, node.left)
 
             # Put branches in queue, if they're truthy...
             if node.left:

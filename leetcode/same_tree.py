@@ -55,7 +55,7 @@ class Solution:
 
         while stack:
 
-            p, q = stack.pop()
+            (p, q) = stack.pop()
 
             result = self.is_same_branch(p, q)
 
@@ -81,7 +81,7 @@ class Solution:
 
         while queue:
 
-            p, q = queue.popleft()
+            (p, q) = queue.popleft()
 
             result = self.is_same_branch(p, q)
 

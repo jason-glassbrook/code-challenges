@@ -87,7 +87,7 @@ class Solution:
 
         while stack:
 
-            node, depth = stack.pop()
+            (node, depth) = stack.pop()
             next_depth = depth + 1
 
             if node.left:
@@ -120,7 +120,7 @@ class Solution:
 
         while queue:
 
-            node, depth = queue.popleft()
+            (node, depth) = queue.popleft()
             next_depth = depth + 1
 
             if node.left:
