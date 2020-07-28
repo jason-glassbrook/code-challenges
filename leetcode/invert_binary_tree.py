@@ -15,7 +15,7 @@ class Solution:
 
     def invertTree(self, root: TreeNode) -> TreeNode:
 
-        return self.invertTree__recursive(root)
+        return self.invertTree__iterative__depth_first(root)
 
     def invertTree__recursive(self, root: TreeNode) -> TreeNode:
         """
@@ -43,6 +43,46 @@ class Solution:
 
         # Use our local function.
         return invert_tree(root)
+
+    def invertTree__iterative__depth_first(self, root: TreeNode) -> TreeNode:
+        """
+        Solution to "invert binary tree" that...
+        -   Uses iteration.
+        -   Visits nodes in a depth-first order by using a stack.
+        """
+
+        from collections import deque as Deck
+
+        # If `root` is falsy, we can skip everything.
+        if not root:
+            return root
+
+        stack = Deck([root])
+
+        while stack:
+
+            # Pop!
+            node = stack.pop()
+
+            # Swap the left and right branches.
+            # We must perform a simultaneous swap or else overwrite a branch.
+            # [Otherwise, we could use a temporary variable.]
+            (
+                node.left,
+                node.right,
+            ) = (
+                node.right,
+                node.left,
+            )
+
+            # Put branches in stack, if they're truthy...
+            if node.left:
+                stack.append(node.left)
+
+            if node.right:
+                stack.append(node.right)
+
+        return root
 
 
 ############################################################
