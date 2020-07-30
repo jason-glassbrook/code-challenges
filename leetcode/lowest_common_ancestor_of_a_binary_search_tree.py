@@ -53,6 +53,39 @@ class TestSolution(testing.TestSolution):
             answer=2,
         )
 
+    def test_empty_tree(self):
+
+        return self.run_test(
+            args=[
+                tree_from_data([]),
+                1,
+                2,
+            ],
+            answer=None,
+        )
+
+    def test_tree_of_depth_1(self):
+
+        return self.run_test(
+            args=[
+                tree_from_data([1]),
+                1,
+                2,
+            ],
+            answer=None,
+        )
+
+    def test_tree_of_depth_2(self):
+
+        return self.run_test(
+            args=[
+                tree_from_data([1, 2, None]),
+                1,
+                2,
+            ],
+            answer=1,
+        )
+
 
 ############################################################
 
