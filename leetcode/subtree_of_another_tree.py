@@ -51,6 +51,36 @@ class TestSolution(testing.TestSolution):
             answer=False,
         )
 
+    def test_empty_trees(self):
+
+        return self.run_test(
+            args=[
+                tree_from_data([]),
+                tree_from_data([]),
+            ],
+            answer=True,
+        )
+
+    def test_equal_trees_of_depth_1(self):
+
+        return self.run_test(
+            args=[
+                tree_from_data([1, None, None]),
+                tree_from_data([1, None, None]),
+            ],
+            answer=True,
+        )
+
+    def test_unequal_trees_of_depth_1(self):
+
+        return self.run_test(
+            args=[
+                tree_from_data([1, None, None]),
+                tree_from_data([2, None, None]),
+            ],
+            answer=False,
+        )
+
 
 ############################################################
 
