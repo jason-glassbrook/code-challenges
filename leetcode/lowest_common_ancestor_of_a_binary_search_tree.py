@@ -101,10 +101,16 @@ class Solution:
 
 import unittest    # noqa: E402
 
-from typing import Any    # noqa: E402
+from typing import (    # noqa: E402
+    Any, Iterable,
+)
 
 from leetcode.tools import testing    # noqa: E402
-from leetcode.tools.binary_tree import tree_from_data    # noqa: E402
+from leetcode.tools.binary_tree import (    # noqa: E402
+    node_from_data,
+    data_from_node,
+    tree_from_data,
+)
 
 #-----------------------------------------------------------
 
@@ -114,25 +120,21 @@ class TestSolution(testing.TestSolution):
     SOLUTION_CLASS = Solution
     SOLUTION_FUNCTION = Solution.MAIN
 
-    def get_val(self, node: Union[TreeNode, None]) -> Any:
-
-        return (node.val if node else None)
-
     def run_test__is_same_node(
         self,
-        args: Any,
+        args: Iterable,
         answer: Any,
     ):
 
         (tree_data, p_data, q_data) = args
 
         root = tree_from_data(tree_data)
-        p = TreeNode(p_data) if p_data else None
-        q = TreeNode(q_data) if q_data else None
+        p = node_from_data(p_data)
+        q = node_from_data(q_data)
 
         return self.run_test(
             args=[root, p, q],
-            transform_result=self.get_val,
+            transform_result=data_from_node,
             answer=answer,
         )
 
