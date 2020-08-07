@@ -23,7 +23,7 @@ class Solution:
         -   Uses recursion.
         """
 
-        # I personally like using local functions instead of `self.<function>`
+        # I personally like using local functions instead of `self.<function>`.
         def invert_tree(node: Union[TreeNode, None]) -> Union[TreeNode, None]:
 
             if node:
