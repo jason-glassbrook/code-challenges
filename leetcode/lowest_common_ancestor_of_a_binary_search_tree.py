@@ -23,6 +23,10 @@ class Solution:
         p: Union[TreeNode, None],
         q: Union[TreeNode, None],
     ) -> Union[TreeNode, None]:
+        """
+        Solution to "lowest common ancestion of a binary search tree" that...
+        -   Uses recursion.
+        """
 
         # Sanity check.
         if (root is None) or (p is None) or (q is None):
