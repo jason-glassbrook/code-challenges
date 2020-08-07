@@ -3,6 +3,7 @@
 ############################################################
 
 from typing import (
+    Any,
     Union,
     Iterable,
 )
@@ -22,6 +23,30 @@ class TreeNode:
         return
 
 
+# Deserialize a binary tree node:
+def node_from_data(data: Any) -> Union[TreeNode, None]:
+    """
+    Deserialize a binary tree node from `data`, which should be a scalar or `None`.
+    """
+
+    if data is None:
+        return None
+
+    return TreeNode(val=data)
+
+
+# Serialize a binary tree node:
+def data_from_node(node: Union[TreeNode, None]) -> Any:
+    """
+    Serialize data from a binary tree `node`, which should be a `TreeNode` or `None`.
+    """
+
+    if node is None:
+        return None
+
+    return node.val
+
+
 # Deserialize a binary tree.
 def tree_from_data(data: Union[Iterable, None]) -> Union[TreeNode, None]:
     """
@@ -29,13 +54,6 @@ def tree_from_data(data: Union[Iterable, None]) -> Union[TreeNode, None]:
     -   where `n` is a scalar value,
     -   where `l` and `r` may be `[n, l, r]`, scalar, or `None`.
     """
-
-    def convert_scalar_data(scalar_data) -> Union[TreeNode, None]:
-
-        if scalar_data is None:
-            return None
-
-        return TreeNode(val=scalar_data)
 
     def convert_list_data(list_data: Iterable) -> Union[TreeNode, None]:
 
@@ -46,7 +64,7 @@ def tree_from_data(data: Union[Iterable, None]) -> Union[TreeNode, None]:
             return node
 
         if n >= 1:
-            node = convert_scalar_data(list_data[0])
+            node = node_from_data(list_data[0])
 
         if node is None:
             return node
@@ -68,6 +86,6 @@ def tree_from_data(data: Union[Iterable, None]) -> Union[TreeNode, None]:
             return convert_list_data(data)
 
         else:
-            return convert_scalar_data(data)
+            return node_from_data(data)
 
     return convert_data(data)
