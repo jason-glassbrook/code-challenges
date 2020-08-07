@@ -2,6 +2,8 @@
 
 ############################################################
 
+from typing import Union
+
 from leetcode.tools.binary_tree import TreeNode
 
 #-----------------------------------------------------------
@@ -13,7 +15,34 @@ class Solution:
 
     def lowestCommonAncestor(self, root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
 
-        pass
+        return self.lowestCommonAncestor__recursive(root, p, q)
+
+    def lowestCommonAncestor__recursive(
+        self,
+        root: Union[TreeNode, None],
+        p: Union[TreeNode, None],
+        q: Union[TreeNode, None],
+    ) -> Union[TreeNode, None]:
+
+        # Sanity check.
+        if (root is None) or (p is None) or (q is None):
+            return None
+
+        # Get values.
+        root__val = root.val
+        p__val = p.val
+        q__val = q.val
+
+        # If both `p` and `q` are less than `root`, branch left.
+        if p__val < root__val and q__val < root__val:
+            return self.lowestCommonAncestor__recursive(root.left, p, q)
+
+        # If both `p` and `q` are more than `root`, branch right.
+        if p__val > root__val and q__val > root__val:
+            return self.lowestCommonAncestor__recursive(root.right, p, q)
+
+        # Otherwise, `root` splits `p` and `q`, so it's their common ancestor.
+        return root
 
 
 ############################################################
