@@ -14,8 +14,12 @@ class Solution:
     MAIN = "lowestCommonAncestor"
 
     def lowestCommonAncestor(self, root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
+        """
+        These solutions do not verify the existance of `p` and `q` in `root`'s tree.
+        They simply find the node that _should_ be the lowest common ancestor.
+        """
 
-        return self.lowestCommonAncestor__recursive(root, p, q)
+        return self.lowestCommonAncestor__iterative(root, p, q)
 
     def lowestCommonAncestor__recursive(
         self,
@@ -47,6 +51,50 @@ class Solution:
 
         # Otherwise, `root` splits `p` and `q`, so it's their common ancestor.
         return root
+
+    def lowestCommonAncestor__iterative(
+        self,
+        root: Union[TreeNode, None],
+        p: Union[TreeNode, None],
+        q: Union[TreeNode, None],
+    ) -> Union[TreeNode, None]:
+        """
+        Solution to "lowest common ancestion of a binary search tree" that...
+        -   Uses iteration.
+
+        NOTE:
+        Depth-first vs breadth-first doesn't apply in this problem.
+        The values of `p` and `q` guide the traversal.
+        """
+
+        # Sanity check.
+        if (root is None) or (p is None) or (q is None):
+            return None
+
+        # Get values.
+        p__val = p.val
+        q__val = q.val
+
+        # Define states.
+        node = root
+
+        while node:
+
+            # Get values.
+            node__val = node.val
+
+            # If both `p` and `q` are less than `node`, branch left.
+            if p__val < node__val and q__val < node__val:
+                node = node.left
+                continue
+
+            # If both `p` and `q` are more than `node`, branch right.
+            if p__val > node__val and q__val > node__val:
+                node = node.right
+                continue
+
+            # Otherwise, `node` splits `p` and `q`, so it's their common ancestor.
+            return node
 
 
 ############################################################
