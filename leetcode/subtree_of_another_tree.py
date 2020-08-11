@@ -2,6 +2,8 @@
 
 ############################################################
 
+from typing import Union
+
 from leetcode.tools.binary_tree import TreeNode
 
 #-----------------------------------------------------------
@@ -12,6 +14,36 @@ class Solution:
     MAIN = "isSubtree"
 
     def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
+
+        pass
+
+    def isSubtree__recursive(self, s: TreeNode, t: TreeNode) -> bool:
+        """
+        Solution to "subtree of another tree" that...
+        -   Uses recursion.
+        """
+
+        pass
+
+    def isSubtree__iterative__depth_first(self, root: TreeNode) -> TreeNode:
+        """
+        Solution to "subtree of another tree" that...
+        -   Uses iteration.
+        -   Visits nodes in a depth-first order by using a queue.
+        """
+
+        from collections import deque as Deck
+
+        pass
+
+    def isSubtree__iterative__breadth_first(self, root: TreeNode) -> TreeNode:
+        """
+        Solution to "subtree of another tree" that...
+        -   Uses iteration.
+        -   Visits nodes in a breadth-first order by using a queue.
+        """
+
+        from collections import deque as Deck
 
         pass
 
