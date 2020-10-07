@@ -17,6 +17,10 @@ class Solution:
 
         pass
 
+    ############################################################
+    #   Strategies
+    ############################################################
+
     def isSubtree__recursive(self, s: TreeNode, t: TreeNode) -> bool:
         """
         Solution to "subtree of another tree" that...
@@ -46,6 +50,35 @@ class Solution:
         from collections import deque as Deck
 
         pass
+
+    ############################################################
+    #   Common Tools
+    ############################################################
+
+    def is_same_branch(
+        self,
+        p: Union[TreeNode, None],
+        q: Union[TreeNode, None],
+    ) -> Union[bool, None]:
+
+        # If both are empty trees, they are the same.
+        if not p and not q:
+            return True
+
+        # Now, if only one is empty, they are not the same.
+        # If we got here, then we ruled out both being empty.
+        if not p or not q:
+            return False
+
+        # Now, both must be non-empty...
+
+        # If their values are not equal, they are not the same. (Duh!)
+        if p.val != q.val:
+            return False
+
+        # Inconclusive.
+        # We must test if both their left and right branches are equal.
+        return None
 
 
 ############################################################
