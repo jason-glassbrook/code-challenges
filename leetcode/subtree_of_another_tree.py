@@ -29,7 +29,7 @@ class Solution:
 
         pass
 
-    def isSubtree__iterative__depth_first(self, root: TreeNode) -> TreeNode:
+    def isSubtree__iterative__depth_first(self, s: TreeNode, t: TreeNode) -> TreeNode:
         """
         Solution to "subtree of another tree" that...
         -   Uses iteration.
@@ -40,7 +40,7 @@ class Solution:
 
         pass
 
-    def isSubtree__iterative__breadth_first(self, root: TreeNode) -> TreeNode:
+    def isSubtree__iterative__breadth_first(self, s: TreeNode, t: TreeNode) -> TreeNode:
         """
         Solution to "subtree of another tree" that...
         -   Uses iteration.
