@@ -29,6 +29,16 @@ class Solution:
         -   Uses recursion.
         """
 
+        def is_same_tree(p: MaybeTreeNode, q: MaybeTreeNode) -> bool:
+            """Tests `is_same_tree` recursively."""
+
+            pass
+
+        def test_branch(s: MaybeTreeNode, t: MaybeTreeNode) -> bool:
+            """Traverses `s` and compares with `t` until they match or `s` is fully traversed."""
+
+            pass
+
         pass
 
     def isSubtree__iterative__depth_first(self, s: TreeNode, t: TreeNode) -> TreeNode:
@@ -40,6 +50,11 @@ class Solution:
 
         from collections import deque as Deck
 
+        def is_same_tree(p: MaybeTreeNode, q: MaybeTreeNode) -> bool:
+            """Tests `is_same_tree` iteratively, depth-first."""
+
+            pass
+
         pass
 
     def isSubtree__iterative__breadth_first(self, s: TreeNode, t: TreeNode) -> TreeNode:
@@ -50,6 +65,11 @@ class Solution:
         """
 
         from collections import deque as Deck
+
+        def is_same_tree(p: MaybeTreeNode, q: MaybeTreeNode) -> bool:
+            """Tests `is_same_tree` iteratively, breadth-first."""
+
+            pass
 
         pass
 
