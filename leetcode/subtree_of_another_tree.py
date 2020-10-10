@@ -17,7 +17,7 @@ class Solution:
 
     def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
 
-        pass
+        return self.isSubtree__recursive(s, t)
 
     ############################################################
     #   Strategies
@@ -32,14 +32,34 @@ class Solution:
         def is_same_tree(p: MaybeTreeNode, q: MaybeTreeNode) -> bool:
             """Tests `is_same_tree` recursively."""
 
-            pass
+            # Test if `p` and `q` are conclusively the same or different.
+            result = self.is_same_branch(p, q)
+            # NOTE: `is_same_branch` deals with `p` and `q` being `None`.
 
-        def test_branch(s: MaybeTreeNode, t: MaybeTreeNode) -> bool:
+            # If conclusive, then return.
+            if result is not None:
+                return result
+
+            # Else, test left and right branches of `p` and `q`.
+            return (is_same_tree(p.left, q.left) and is_same_tree(p.right, q.right))
+
+        def test_subtree(s: MaybeTreeNode, t: MaybeTreeNode) -> bool:
             """Traverses `s` and compares with `t` until they match or `s` is fully traversed."""
 
-            pass
+            # If there's no `s` and `t` isn't, then `t` can't be a subtree of `s`.
+            if s is None and t is not None:
+                return False
 
-        pass
+            # Else, test...
+            # -   If `s` and `t` are the same, then `t` is a subtree of `s`.
+            # -   If `t` is a subtree of `s`'s left branch.
+            # -   If `t` is a subtree of `s`'s right branch.
+            return (
+                is_same_tree(s, t) or test_subtree(s.left, t) or test_subtree(s.right, t)
+            )
+
+        # Do it!
+        return test_subtree(s, t)
 
     def isSubtree__iterative__depth_first(self, s: TreeNode, t: TreeNode) -> TreeNode:
         """
