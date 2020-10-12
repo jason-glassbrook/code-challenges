@@ -45,17 +45,15 @@ class Solution:
         def test_subtree(s: MaybeTreeNode, t: MaybeTreeNode) -> bool:
             """Traverses `s` and compares with `t` until they match or `s` is fully traversed."""
 
-            # If there's no `s` and `t` isn't `None`, then `t` can't be a subtree of `s`.
-            if s is None and t is not None:
-                return False
+            # Test if current `s` and `t` are the same tree (`t` is a subtree of `s`).
+            found_subtree = is_same_tree(s, t)
 
-            # Else, test...
-            # -   If `s` and `t` are the same, then `t` is a subtree of `s`.
-            # -   If `t` is a subtree of `s`'s left branch.
-            # -   If `t` is a subtree of `s`'s right branch.
-            return (
-                is_same_tree(s, t) or test_subtree(s.left, t) or test_subtree(s.right, t)
-            )
+            # If not found, then test the left and right branches of `s`.
+            if s and not found_subtree:
+                return test_subtree(s.left, t) or test_subtree(s.right, t)
+
+            # Else, return findings.
+            return found_subtree
 
         # Do it!
         return test_subtree(s, t)
@@ -99,15 +97,11 @@ class Solution:
 
             s = stack.pop()
 
-            # If there's no `s` and `t` isn't `None`, then `t` can't be a subtree of `s`.
-            if s is None and t is not None:
-                continue
-
             # Test if current `s` and `t` are the same tree (`t` is a subtree of `s`).
             found_subtree = is_same_tree(s, t)
 
             # If not found, then append the left and right branches of `s` for testing.
-            if not found_subtree:
+            if s and not found_subtree:
                 stack.append(s.left)
                 stack.append(s.right)
 
