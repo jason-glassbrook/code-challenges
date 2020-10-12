@@ -17,7 +17,7 @@ class Solution:
 
     def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
 
-        return self.isSubtree__recursive(s, t)
+        return self.isSubtree__iterative__breadth_first(s, t)
 
     ############################################################
     #   Strategies
@@ -137,7 +137,24 @@ class Solution:
             # By here, `they_match` must be `True` or `False`.
             return they_match
 
-        pass
+        #-----------------------------------------------------------
+
+        queue = Deck([s])
+        found_subtree = False
+
+        while queue and found_subtree is not True:
+
+            s = queue.popleft()
+
+            # Test if current `s` and `t` are the same tree (`t` is a subtree of `s`).
+            found_subtree = is_same_tree(s, t)
+
+            # If not found, then append the left and right branches of `s` for testing.
+            if s and not found_subtree:
+                queue.append(s.left)
+                queue.append(s.right)
+
+        return found_subtree
 
     ############################################################
     #   Common Tools
