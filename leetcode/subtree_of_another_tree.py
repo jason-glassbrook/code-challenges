@@ -45,7 +45,7 @@ class Solution:
         def test_subtree(s: MaybeTreeNode, t: MaybeTreeNode) -> bool:
             """Traverses `s` and compares with `t` until they match or `s` is fully traversed."""
 
-            # If there's no `s` and `t` isn't, then `t` can't be a subtree of `s`.
+            # If there's no `s` and `t` isn't `None`, then `t` can't be a subtree of `s`.
             if s is None and t is not None:
                 return False
 
