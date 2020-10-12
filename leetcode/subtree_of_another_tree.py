@@ -90,7 +90,28 @@ class Solution:
             # By here, `they_match` must be `True` or `False`.
             return they_match
 
-        pass
+        #-----------------------------------------------------------
+
+        stack = Deck([s])
+        found_subtree = False
+
+        while stack and found_subtree is not True:
+
+            s = stack.pop()
+
+            # If there's no `s` and `t` isn't `None`, then `t` can't be a subtree of `s`.
+            if s is None and t is not None:
+                continue
+
+            # Test if current `s` and `t` are the same tree (`t` is a subtree of `s`).
+            found_subtree = is_same_tree(s, t)
+
+            # If not found, then append the left and right branches of `s` for testing.
+            if not found_subtree:
+                stack.append(s.left)
+                stack.append(s.right)
+
+        return found_subtree
 
     def isSubtree__iterative__breadth_first(self, s: TreeNode, t: TreeNode) -> TreeNode:
         """
