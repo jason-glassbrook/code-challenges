@@ -68,6 +68,8 @@ class Solution:
             # Else, return findings.
             return found_subtree
 
+        #-----------------------------------------------------------
+
         # Do it!
         return test_subtree(s, t)
 
