@@ -32,15 +32,14 @@ class Solution:
         def is_same_tree(p: MaybeTreeNode, q: MaybeTreeNode) -> bool:
             """Tests `is_same_tree` recursively."""
 
-            # Test if `p` and `q` are conclusively the same or different.
-            result = self.is_same_branch(p, q)
-            # NOTE: `is_same_branch` deals with `p` and `q` being `None`.
+            # Test if branches `p` and `q` are conclusively the same.
+            they_match = self.is_same_branch(p, q)
 
-            # If conclusive, then return.
-            if result is not None:
-                return result
+            # If conclusive, then return the result.
+            if they_match is not None:
+                return they_match
 
-            # Else, test left and right branches of `p` and `q`.
+            # Else, test the left and right branches of `p` and `q`.
             return (is_same_tree(p.left, q.left) and is_same_tree(p.right, q.right))
 
         def test_subtree(s: MaybeTreeNode, t: MaybeTreeNode) -> bool:
