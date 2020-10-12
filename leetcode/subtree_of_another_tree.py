@@ -72,7 +72,23 @@ class Solution:
         def is_same_tree(p: MaybeTreeNode, q: MaybeTreeNode) -> bool:
             """Tests `is_same_tree` iteratively, depth-first."""
 
-            pass
+            stack = Deck([(p, q)])
+            they_match = None
+
+            while stack and they_match is not False:
+
+                (p, q) = stack.pop()
+
+                # Test if the branches match.
+                they_match = self.is_same_branch(p, q)
+
+                # If inconclusive, then append the left and right branches of `p` and `q` for testing.
+                if they_match is None:
+                    stack.append((p.left, q.left))
+                    stack.append((p.right, q.right))
+
+            # By here, `they_match` must be `True` or `False`.
+            return they_match
 
         pass
 
@@ -88,7 +104,23 @@ class Solution:
         def is_same_tree(p: MaybeTreeNode, q: MaybeTreeNode) -> bool:
             """Tests `is_same_tree` iteratively, breadth-first."""
 
-            pass
+            queue = Deck([(p, q)])
+            they_match = None
+
+            while queue and they_match is not False:
+
+                (p, q) = queue.popleft()
+
+                # Test if the branches match.
+                they_match = self.is_same_branch(p, q)
+
+                # If inconclusive, then append the left and right branches of `p` and `q` for testing.
+                if they_match is None:
+                    queue.append((p.left, q.left))
+                    queue.append((p.right, q.right))
+
+            # By here, `they_match` must be `True` or `False`.
+            return they_match
 
         pass
 
