@@ -108,21 +108,24 @@ class Solution:
         #-----------------------------------------------------------
 
         stack = Deck([s])
-        found_subtree = False
 
-        while stack and found_subtree is not True:
+        while stack:
 
             s = stack.pop()
 
-            # Test if current `s` and `t` are the same tree (`t` is a subtree of `s`).
-            found_subtree = is_same_tree(s, t)
+            # Test if the local `s` and `t` are the same tree (`t` is a subtree of `s`).
+            they_match = is_same_tree(s, t)
 
-            # If not found, then append the left and right branches of `s` for testing.
-            if s and not found_subtree:
+            # If we found a match, then return.
+            if they_match:
+                return True
+
+            # Else, if there's more to the local `s`, then append the left and right branches of `s` for testing.
+            elif s:
                 stack.append(s.left)
                 stack.append(s.right)
 
-        return found_subtree
+        return False
 
     def isSubtree__iterative__breadth_first(self, s: TreeNode, t: TreeNode) -> TreeNode:
         """
@@ -166,46 +169,24 @@ class Solution:
         #-----------------------------------------------------------
 
         queue = Deck([s])
-        found_subtree = False
 
-        while queue and found_subtree is not True:
+        while queue:
 
             s = queue.popleft()
 
-            # Test if current `s` and `t` are the same tree (`t` is a subtree of `s`).
-            found_subtree = is_same_tree(s, t)
+            # Test if the local `s` and `t` are the same tree (`t` is a subtree of `s`).
+            they_match = is_same_tree(s, t)
 
-            # If not found, then append the left and right branches of `s` for testing.
-            if s and not found_subtree:
+            # If we found a match, then return.
+            if they_match:
+                return True
+
+            # Else, if there's more to the local `s`, then append the left and right branches of `s` for testing.
+            elif s:
                 queue.append(s.left)
                 queue.append(s.right)
 
-        return found_subtree
-
-    ############################################################
-    #   Common Tools
-    ############################################################
-
-    def is_same_branch(
-        self,
-        p: MaybeTreeNode,
-        q: MaybeTreeNode,
-    ) -> Union[bool, None]:
-
-        # If both are empty trees, they are the same.
-        if not p and not q:
-            return True
-
-        # Now, if only one is empty, they are not the same.
-        # If we got here, then we ruled out both being empty.
-        if not p or not q:
-            return False
-
-        # Now, both must be non-empty...
-
-        # If their values are not equal, they are not the same. (Duh!)
-        if p.val != q.val:
-            return False
+        return False
 
 
 ############################################################
