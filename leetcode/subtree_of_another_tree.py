@@ -17,7 +17,7 @@ class Solution:
 
     def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
 
-        return self.isSubtree__iterative__breadth_first(s, t)
+        return self.isSubtree__recursive(s, t)
 
     ############################################################
     #   Strategies
@@ -32,12 +32,20 @@ class Solution:
         def is_same_tree(p: MaybeTreeNode, q: MaybeTreeNode) -> bool:
             """Tests `is_same_tree` recursively."""
 
-            # Test if branches `p` and `q` are conclusively the same.
-            they_match = self.is_same_branch(p, q)
+            # If both are empty trees, they are the same.
+            if not p and not q:
+                return True
 
-            # If conclusive, then return the result.
-            if they_match is not None:
-                return they_match
+            # Now, if only one is empty, they are not the same.
+            # If we got here, then we ruled out both being empty.
+            if not p or not q:
+                return False
+
+            # Now, both must be non-empty...
+
+            # If their values are not equal, they are not the same. (Duh!)
+            if p.val != q.val:
+                return False
 
             # Else, test the left and right branches of `p` and `q`.
             return (is_same_tree(p.left, q.left) and is_same_tree(p.right, q.right))
@@ -71,22 +79,31 @@ class Solution:
             """Tests `is_same_tree` iteratively, depth-first."""
 
             stack = Deck([(p, q)])
-            they_match = None
 
-            while stack and they_match is not False:
+            while stack:
 
                 (p, q) = stack.pop()
 
-                # Test if the branches match.
-                they_match = self.is_same_branch(p, q)
+                # If both are empty trees, they are the same.
+                if not p and not q:
+                    continue
 
-                # If inconclusive, then append the left and right branches of `p` and `q` for testing.
-                if they_match is None:
-                    stack.append((p.left, q.left))
-                    stack.append((p.right, q.right))
+                # Now, if only one is empty, they are not the same.
+                # If we got here, then we ruled out both being empty.
+                if not p or not q:
+                    return False
 
-            # By here, `they_match` must be `True` or `False`.
-            return they_match
+                # Now, both must be non-empty...
+
+                # If their values are not equal, they are not the same. (Duh!)
+                if p.val != q.val:
+                    return False
+
+                # Else, then append the left and right branches of `p` and `q` for testing.
+                stack.append((p.left, q.left))
+                stack.append((p.right, q.right))
+
+            return True
 
         #-----------------------------------------------------------
 
@@ -120,22 +137,31 @@ class Solution:
             """Tests `is_same_tree` iteratively, breadth-first."""
 
             queue = Deck([(p, q)])
-            they_match = None
 
-            while queue and they_match is not False:
+            while queue:
 
                 (p, q) = queue.popleft()
 
-                # Test if the branches match.
-                they_match = self.is_same_branch(p, q)
+                # If both are empty trees, they are the same.
+                if not p and not q:
+                    continue
 
-                # If inconclusive, then append the left and right branches of `p` and `q` for testing.
-                if they_match is None:
-                    queue.append((p.left, q.left))
-                    queue.append((p.right, q.right))
+                # Now, if only one is empty, they are not the same.
+                # If we got here, then we ruled out both being empty.
+                if not p or not q:
+                    return False
 
-            # By here, `they_match` must be `True` or `False`.
-            return they_match
+                # Now, both must be non-empty...
+
+                # If their values are not equal, they are not the same. (Duh!)
+                if p.val != q.val:
+                    return False
+
+                # Else, then append the left and right branches of `p` and `q` for testing.
+                queue.append((p.left, q.left))
+                queue.append((p.right, q.right))
+
+            return True
 
         #-----------------------------------------------------------
 
@@ -180,10 +206,6 @@ class Solution:
         # If their values are not equal, they are not the same. (Duh!)
         if p.val != q.val:
             return False
-
-        # Inconclusive.
-        # We must test if both their left and right branches are equal.
-        return None
 
 
 ############################################################
