@@ -17,15 +17,16 @@ class Solution:
 
     def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
 
-        return self.isSubtree__recursive(s, t)
+        return self.isSubtree__comparing_nodes__recursive(s, t)
 
     ############################################################
     #   Strategies
     ############################################################
 
-    def isSubtree__recursive(self, s: TreeNode, t: TreeNode) -> bool:
+    def isSubtree__comparing_nodes__recursive(self, s: TreeNode, t: TreeNode) -> bool:
         """
         Solution to "subtree of another tree" that...
+        -   Compares tree nodes.
         -   Uses recursion.
         """
 
@@ -66,9 +67,12 @@ class Solution:
         # Do it!
         return test_subtree(s, t)
 
-    def isSubtree__iterative__depth_first(self, s: TreeNode, t: TreeNode) -> TreeNode:
+    def isSubtree__comparing_nodes__iterative__depth_first(
+        self, s: TreeNode, t: TreeNode
+    ) -> TreeNode:
         """
         Solution to "subtree of another tree" that...
+        -   Compares tree nodes.
         -   Uses iteration.
         -   Visits nodes in a depth-first order by using a queue.
         """
@@ -127,9 +131,12 @@ class Solution:
 
         return False
 
-    def isSubtree__iterative__breadth_first(self, s: TreeNode, t: TreeNode) -> TreeNode:
+    def isSubtree__comparing_nodes__iterative__breadth_first(
+        self, s: TreeNode, t: TreeNode
+    ) -> TreeNode:
         """
         Solution to "subtree of another tree" that...
+        -   Compares tree nodes.
         -   Uses iteration.
         -   Visits nodes in a breadth-first order by using a queue.
         """
