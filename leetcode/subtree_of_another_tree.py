@@ -17,7 +17,7 @@ class Solution:
 
     def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
 
-        return self.isSubtree__comparing_nodes__recursive(s, t)
+        return self.isSubtree__trees_as_strings__recursive(s, t)
 
     ############################################################
     #   Strategies
@@ -204,6 +204,31 @@ class Solution:
                 queue.append(s.right)
 
         return False
+
+    def isSubtree__trees_as_strings__recursive(
+        self,
+        s: TreeNode,
+        t: TreeNode,
+    ) -> bool:
+        """
+        Solution to "subtree of another tree" that...
+        -   Converts trees to strings.
+        -   Checks if `t`'s string is a substring of `s`'s string.
+        -   Uses recursion.
+        """
+
+        def tree_as_string(n: MaybeTreeNode) -> str:
+            """Builds a string from `n` in NLR order, recursively."""
+
+            if n is None:
+                return "~"
+
+            return f"[{n.val} {tree_as_string(n.left)} {tree_as_string(n.right)}]"
+
+        #-----------------------------------------------------------
+
+        # Do it!
+        return tree_as_string(t) in tree_as_string(s)
 
 
 ############################################################
