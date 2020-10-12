@@ -23,7 +23,11 @@ class Solution:
     #   Strategies
     ############################################################
 
-    def isSubtree__comparing_nodes__recursive(self, s: TreeNode, t: TreeNode) -> bool:
+    def isSubtree__comparing_nodes__recursive(
+        self,
+        s: TreeNode,
+        t: TreeNode,
+    ) -> bool:
         """
         Solution to "subtree of another tree" that...
         -   Compares tree nodes.
@@ -68,7 +72,9 @@ class Solution:
         return test_subtree(s, t)
 
     def isSubtree__comparing_nodes__iterative__depth_first(
-        self, s: TreeNode, t: TreeNode
+        self,
+        s: TreeNode,
+        t: TreeNode,
     ) -> TreeNode:
         """
         Solution to "subtree of another tree" that...
@@ -132,7 +138,9 @@ class Solution:
         return False
 
     def isSubtree__comparing_nodes__iterative__breadth_first(
-        self, s: TreeNode, t: TreeNode
+        self,
+        s: TreeNode,
+        t: TreeNode,
     ) -> TreeNode:
         """
         Solution to "subtree of another tree" that...
