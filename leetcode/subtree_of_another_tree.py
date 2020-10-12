@@ -17,7 +17,7 @@ class Solution:
 
     def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
 
-        return self.isSubtree__trees_as_strings__recursive(s, t)
+        return self.isSubtree__trees_as_strings__iterative(s, t)
 
     ############################################################
     #   Strategies
@@ -224,6 +224,51 @@ class Solution:
                 return "~"
 
             return f"[{n.val} {tree_as_string(n.left)} {tree_as_string(n.right)}]"
+
+        #-----------------------------------------------------------
+
+        # Do it!
+        return tree_as_string(t) in tree_as_string(s)
+
+    def isSubtree__trees_as_strings__iterative(
+        self,
+        s: TreeNode,
+        t: TreeNode,
+    ) -> bool:
+        """
+        Solution to "subtree of another tree" that...
+        -   Converts trees to strings.
+        -   Checks if `t`'s string is a substring of `s`'s string.
+        -   Uses iteration.
+        -   Visits nodes in a depth-first order by using a queue.
+
+        NOTE: While a breadth-first solution may be possible, it is not easy with this strategy.
+        So I'm not going to attempt that...
+        """
+
+        from collections import deque as Deck
+
+        def tree_as_string(n: MaybeTreeNode) -> str:
+            """Builds a string from `n` in NLR order, iteratively."""
+
+            stack = Deck([(n, 0)])
+            result = ""
+
+            while stack:
+
+                (n, right_count) = stack.pop()
+                # ⬆ We are tracking the number of "rights" we've taken so we can balance brackets.
+
+                if n is None:
+                    result += " ~" + ("]" * right_count)
+
+                else:
+                    result += f" [{n.val}"
+                    stack.append((n.right, right_count + 1))
+                    stack.append((n.left, 0))
+
+            return result[1 ::]
+            # ⬆ Removes initial space.
 
         #-----------------------------------------------------------
 
