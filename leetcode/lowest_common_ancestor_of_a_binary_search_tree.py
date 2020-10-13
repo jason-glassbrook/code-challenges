@@ -6,6 +6,8 @@ from typing import Union
 
 from leetcode.tools.binary_tree import TreeNode
 
+MaybeTreeNode = Union[TreeNode, None]
+
 #-----------------------------------------------------------
 
 
@@ -23,10 +25,10 @@ class Solution:
 
     def lowestCommonAncestor__recursive(
         self,
-        root: Union[TreeNode, None],
-        p: Union[TreeNode, None],
-        q: Union[TreeNode, None],
-    ) -> Union[TreeNode, None]:
+        root: MaybeTreeNode,
+        p: MaybeTreeNode,
+        q: MaybeTreeNode,
+    ) -> MaybeTreeNode:
         """
         Solution to "lowest common ancestion of a binary search tree" that...
         -   Uses recursion.
@@ -54,10 +56,10 @@ class Solution:
 
     def lowestCommonAncestor__iterative(
         self,
-        root: Union[TreeNode, None],
-        p: Union[TreeNode, None],
-        q: Union[TreeNode, None],
-    ) -> Union[TreeNode, None]:
+        root: MaybeTreeNode,
+        p: MaybeTreeNode,
+        q: MaybeTreeNode,
+    ) -> MaybeTreeNode:
         """
         Solution to "lowest common ancestion of a binary search tree" that...
         -   Uses iteration.
