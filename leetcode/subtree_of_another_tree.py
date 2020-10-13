@@ -65,7 +65,7 @@ class Solution:
                 return False
 
             # Else, test the left and right branches of `p` and `q`.
-            return (is_same_tree(p.left, q.left) and is_same_tree(p.right, q.right))
+            return is_same_tree(p.left, q.left) and is_same_tree(p.right, q.right)
 
         def test_subtree(s: MaybeTreeNode, t: MaybeTreeNode) -> bool:
             """Traverses `s` and compares with `t` until they match or `s` is fully traversed."""
