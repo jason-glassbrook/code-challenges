@@ -17,7 +17,7 @@ class Solution:
 
     def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
 
-        return self.isSameTree__comparing_nodes__iterative__breadth_first(p, q)
+        return self.isSameTree__trees_as_strings__iterative__depth_first(p, q)
 
     ############################################################
     #   Strategies
@@ -166,8 +166,35 @@ class Solution:
         -   Visits nodes in a depth-first order by using a queue.
         """
 
-
         pass
+
+        from collections import deque as Deck
+
+        def tree_as_string(n: MaybeTreeNode) -> str:
+            """Builds a string from `n` in DFT-NLR order, iteratively."""
+
+            stack = Deck([n])
+            result = ""
+
+            while stack:
+
+                n = stack.pop()
+
+                if n is None:
+                    result += " ~"
+
+                else:
+                    result += f" {n.val}"
+                    stack.append(n.right)
+                    stack.append(n.left)
+
+            return result[1 ::]
+            # ⬆ Removes initial space.
+
+        #---------------------------------------
+
+        # Do it!
+        return tree_as_string(p) == tree_as_string(q)
 
     def isSameTree__trees_as_strings__iterative__breadth_first(
         self,
