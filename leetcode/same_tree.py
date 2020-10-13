@@ -17,7 +17,7 @@ class Solution:
 
     def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
 
-        return self.isSameTree__trees_as_strings__iterative__breadth_first(p, q)
+        return self.isSameTree__comparing_nodes__recursive(p, q)
 
     ############################################################
     #   Strategies
@@ -52,13 +52,23 @@ class Solution:
             q: MaybeTreeNode,
         ) -> bool:
 
-            result = self.is_same_branch(p, q)
+            # If both are empty trees, they are the same.
+            if not p and not q:
+                return True
 
-            if result is not None:
-                return result
+            # Now, if only one is empty, they are not the same.
+            # If we got here, then we ruled out both being empty.
+            if not p or not q:
+                return False
 
-            else:
-                return test_branch(p.left, q.left) and test_branch(p.right, q.right)
+            # Now, both must be non-empty...
+
+            # If their values are not equal, they are not the same. (Duh!)
+            if p.val != q.val:
+                return False
+
+            # Else, test the left and right branches of `p` and `q`.
+            return test_branch(p.left, q.left) and test_branch(p.right, q.right)
 
         return test_branch(p, q)
 
@@ -81,14 +91,24 @@ class Solution:
 
             (p, q) = stack.pop()
 
-            result = self.is_same_branch(p, q)
+            # If both are empty trees, they are the same.
+            if not p and not q:
+                continue
 
-            if result is False:
-                return result
+            # Now, if only one is empty, they are not the same.
+            # If we got here, then we ruled out both being empty.
+            if not p or not q:
+                return False
 
-            elif result is None:
-                stack.append((p.left, q.left))
-                stack.append((p.right, q.right))
+            # Now, both must be non-empty...
+
+            # If their values are not equal, they are not the same. (Duh!)
+            if p.val != q.val:
+                return False
+
+            # Else, then append the left and right branches of `p` and `q` for testing.
+            stack.append((p.left, q.left))
+            stack.append((p.right, q.right))
 
         return True
 
@@ -111,14 +131,24 @@ class Solution:
 
             (p, q) = queue.popleft()
 
-            result = self.is_same_branch(p, q)
+            # If both are empty trees, they are the same.
+            if not p and not q:
+                continue
 
-            if result is False:
-                return result
+            # Now, if only one is empty, they are not the same.
+            # If we got here, then we ruled out both being empty.
+            if not p or not q:
+                return False
 
-            elif result is None:
-                queue.append((p.left, q.left))
-                queue.append((p.right, q.right))
+            # Now, both must be non-empty...
+
+            # If their values are not equal, they are not the same. (Duh!)
+            if p.val != q.val:
+                return False
+
+            # Else, then append the left and right branches of `p` and `q` for testing.
+            queue.append((p.left, q.left))
+            queue.append((p.right, q.right))
 
         return True
 
@@ -238,35 +268,6 @@ class Solution:
 
         # Do it!
         return tree_as_string(p) == tree_as_string(q)
-
-    ############################################################
-    #   Common Tools
-    ############################################################
-
-    def is_same_branch(
-        self,
-        p: MaybeTreeNode,
-        q: MaybeTreeNode,
-    ) -> Union[bool, None]:
-
-        # If both are empty trees, they are the same.
-        if not p and not q:
-            return True
-
-        # Now, if only one is empty, they are not the same.
-        # If we got here, then we ruled out both being empty.
-        if not p or not q:
-            return False
-
-        # Now, both must be non-empty...
-
-        # If their values are not equal, they are not the same. (Duh!)
-        if p.val != q.val:
-            return False
-
-        # Inconclusive.
-        # We must test if both their left and right branches are equal.
-        return None
 
 
 ############################################################
