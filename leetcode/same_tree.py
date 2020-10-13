@@ -140,6 +140,19 @@ class Solution:
 
         pass
 
+        def tree_as_string(n: MaybeTreeNode) -> str:
+            """Builds a string from `n` in NLR order, recursively."""
+
+            if n is None:
+                return "~"
+
+            return f"{n.val} {tree_as_string(n.left)} {tree_as_string(n.right)}"
+
+        #---------------------------------------
+
+        # Do it!
+        return tree_as_string(p) == tree_as_string(q)
+
     def isSameTree__trees_as_strings__iterative__depth_first(
         self,
         p: TreeNode,
@@ -152,6 +165,7 @@ class Solution:
         -   Uses iteration.
         -   Visits nodes in a depth-first order by using a queue.
         """
+
 
         pass
 
