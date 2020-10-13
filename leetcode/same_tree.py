@@ -3,7 +3,10 @@
 ############################################################
 
 from typing import Union
+
 from leetcode.tools.binary_tree import TreeNode
+
+MaybeTreeNode = Union[TreeNode, None]
 
 #-----------------------------------------------------------
 
@@ -28,8 +31,8 @@ class Solution:
         """
 
         def test_branch(
-            p: Union[TreeNode, None],
-            q: Union[TreeNode, None],
+            p: MaybeTreeNode,
+            q: MaybeTreeNode,
         ) -> bool:
 
             result = self.is_same_branch(p, q)
@@ -100,8 +103,8 @@ class Solution:
 
     def is_same_branch(
         self,
-        p: Union[TreeNode, None],
-        q: Union[TreeNode, None],
+        p: MaybeTreeNode,
+        q: MaybeTreeNode,
     ) -> Union[bool, None]:
 
         # If both are empty trees, they are the same.
