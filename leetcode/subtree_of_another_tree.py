@@ -21,7 +21,19 @@ class Solution:
 
     ############################################################
     #   Strategies
+    #-----------------------------------------------------------
+    # -   Comparing Nodes
+    #     -   Recursive
+    #     -   Iterative, Depth-First
+    #     -   Iterative, Breadth-First
+    # -   Trees As Strings
+    #     -   Recursive
+    #     -   Iterative (Depth-First)
     ############################################################
+
+    ########################################
+    #   Comparing Nodes
+    ########################################
 
     def isSubtree__comparing_nodes__recursive(
         self,
@@ -68,7 +80,7 @@ class Solution:
             # Else, return findings.
             return found_subtree
 
-        #-----------------------------------------------------------
+        #---------------------------------------
 
         # Do it!
         return test_subtree(s, t)
@@ -117,7 +129,7 @@ class Solution:
 
             return True
 
-        #-----------------------------------------------------------
+        #---------------------------------------
 
         stack = Deck([s])
 
@@ -183,7 +195,7 @@ class Solution:
 
             return True
 
-        #-----------------------------------------------------------
+        #---------------------------------------
 
         queue = Deck([s])
 
@@ -205,6 +217,10 @@ class Solution:
 
         return False
 
+    ########################################
+    #   Trees As Strings
+    ########################################
+
     def isSubtree__trees_as_strings__recursive(
         self,
         s: TreeNode,
@@ -225,7 +241,7 @@ class Solution:
 
             return f"[{n.val} {tree_as_string(n.left)} {tree_as_string(n.right)}]"
 
-        #-----------------------------------------------------------
+        #---------------------------------------
 
         # Do it!
         return tree_as_string(t) in tree_as_string(s)
@@ -270,7 +286,7 @@ class Solution:
             return result[1 ::]
             # ⬆ Removes initial space.
 
-        #-----------------------------------------------------------
+        #---------------------------------------
 
         # Do it!
         return tree_as_string(t) in tree_as_string(s)
@@ -283,7 +299,7 @@ import unittest    # noqa: E402
 from leetcode.tools import testing    # noqa: E402
 from leetcode.tools.binary_tree import tree_from_data    # noqa: E402
 
-#-----------------------------------------------------------
+#---------------------------------------
 
 
 class TestSolution(testing.TestSolution):
