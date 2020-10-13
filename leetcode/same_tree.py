@@ -17,13 +17,30 @@ class Solution:
 
     def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
 
-        return self.isSameTree__iterative__breadth_first(p, q)
+        return self.isSameTree__comparing_nodes__iterative__breadth_first(p, q)
 
     ############################################################
     #   Strategies
+    #-----------------------------------------------------------
+    # -   Comparing Nodes
+    #     -   Recursive
+    #     -   Iterative, Depth-First
+    #     -   Iterative, Breadth-First
+    # -   Trees As Strings
+    #     -   Recursive
+    #     -   Iterative, Depth-First
+    #     -   Iterative, Breadth-First
     ############################################################
 
-    def isSameTree__recursive(self, p: TreeNode, q: TreeNode) -> bool:
+    ########################################
+    #   Comparing Nodes
+    ########################################
+
+    def isSameTree__comparing_nodes__recursive(
+        self,
+        p: TreeNode,
+        q: TreeNode,
+    ) -> bool:
         """
         Solution to "is same tree" that...
         -   Uses recursion.
@@ -45,7 +62,11 @@ class Solution:
 
         return test_branch(p, q)
 
-    def isSameTree__iterative__depth_first(self, p: TreeNode, q: TreeNode) -> bool:
+    def isSameTree__comparing_nodes__iterative__depth_first(
+        self,
+        p: TreeNode,
+        q: TreeNode,
+    ) -> bool:
         """
         Solution to "is same tree" that...
         -   Uses iteration.
@@ -71,7 +92,11 @@ class Solution:
 
         return True
 
-    def isSameTree__iterative__breadth_first(self, p: TreeNode, q: TreeNode) -> bool:
+    def isSameTree__comparing_nodes__iterative__breadth_first(
+        self,
+        p: TreeNode,
+        q: TreeNode,
+    ) -> bool:
         """
         Solution to "is same tree" that...
         -   Uses iteration.
@@ -96,6 +121,54 @@ class Solution:
                 queue.append((p.right, q.right))
 
         return True
+
+    ########################################
+    #   Trees As Strings
+    ########################################
+
+    def isSameTree__trees_as_strings__recursive(
+        self,
+        p: TreeNode,
+        q: TreeNode,
+    ) -> bool:
+        """
+        Solution to "is same tree" that...
+        -   Converts trees to strings.
+        -   Checks if `p`'s string is a substring of `q`'s string.
+        -   Uses recursion.
+        """
+
+        pass
+
+    def isSameTree__trees_as_strings__iterative__depth_first(
+        self,
+        p: TreeNode,
+        q: TreeNode,
+    ) -> bool:
+        """
+        Solution to "is same tree" that...
+        -   Converts trees to strings.
+        -   Checks if `p`'s string is a substring of `q`'s string.
+        -   Uses iteration.
+        -   Visits nodes in a depth-first order by using a queue.
+        """
+
+        pass
+
+    def isSameTree__trees_as_strings__iterative__breadth_first(
+        self,
+        p: TreeNode,
+        q: TreeNode,
+    ) -> bool:
+        """
+        Solution to "is same tree" that...
+        -   Converts trees to strings.
+        -   Checks if `p`'s string is a substring of `q`'s string.
+        -   Uses iteration.
+        -   Visits nodes in a depth-first order by using a queue.
+        """
+
+        pass
 
     ############################################################
     #   Common Tools
