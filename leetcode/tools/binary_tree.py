@@ -23,8 +23,14 @@ class TreeNode:
         return
 
 
+#-----------------------------------------------------------
+
+MaybeIterable = Union[Iterable, None]
+MaybeTreeNode = Union[TreeNode, None]
+
+
 # Deserialize a binary tree node.
-def node_from_data(data: Any) -> Union[TreeNode, None]:
+def node_from_data(data: Any) -> MaybeTreeNode:
     """
     Deserialize a binary tree node from `data`, which should be a scalar or `None`.
     """
@@ -36,7 +42,7 @@ def node_from_data(data: Any) -> Union[TreeNode, None]:
 
 
 # Serialize a binary tree node.
-def data_from_node(node: Union[TreeNode, None]) -> Any:
+def data_from_node(node: MaybeTreeNode) -> Any:
     """
     Serialize data from a binary tree `node`, which should be a `TreeNode` or `None`.
     """
@@ -48,14 +54,14 @@ def data_from_node(node: Union[TreeNode, None]) -> Any:
 
 
 # Deserialize a binary tree.
-def tree_from_data(data: Union[Iterable, None]) -> Union[TreeNode, None]:
+def tree_from_data(data: MaybeIterable) -> MaybeTreeNode:
     """
     Deserialize a binary tree from `data`, which should be of the form `[n, l, r]` or `None`,
     -   where `n` is a scalar value,
     -   where `l` and `r` may be `[n, l, r]`, scalar, or `None`.
     """
 
-    def convert_list_data(list_data: Iterable) -> Union[TreeNode, None]:
+    def convert_list_data(list_data: Iterable) -> MaybeTreeNode:
 
         n = len(list_data)
         node = None
@@ -80,7 +86,7 @@ def tree_from_data(data: Union[Iterable, None]) -> Union[TreeNode, None]:
 
         return node
 
-    def convert_data(data) -> Union[TreeNode, None]:
+    def convert_data(data) -> MaybeTreeNode:
 
         if isinstance(data, Iterable):
             return convert_list_data(data)
