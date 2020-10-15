@@ -32,7 +32,7 @@ MaybeTreeNode = Union[TreeNode, None]
 # Deserialize a binary tree node.
 def node_from_data(data: Any) -> MaybeTreeNode:
     """
-    Deserialize a binary tree node from `data`, which should be a scalar or `None`.
+    Deserialize a binary tree node from `data`, which must be something or `None`.
     """
 
     if data is None:
@@ -44,7 +44,7 @@ def node_from_data(data: Any) -> MaybeTreeNode:
 # Serialize a binary tree node.
 def data_from_node(node: MaybeTreeNode) -> Any:
     """
-    Serialize data from a binary tree `node`, which should be a `TreeNode` or `None`.
+    Serialize data from a binary tree `node`, which must be a `TreeNode` or `None`.
     """
 
     if node is None:
@@ -56,7 +56,7 @@ def data_from_node(node: MaybeTreeNode) -> Any:
 # Deserialize a binary tree.
 def tree_from_data(data: MaybeIterable) -> MaybeTreeNode:
     """
-    Deserialize a binary tree from `data`, which should be of the form `[n, l, r]` or `None`,
+    Deserialize a binary tree from `data`, which must be of the form `[n, l, r]` or `None`,
     -   where `n` is a scalar value,
     -   where `l` and `r` may be `[n, l, r]`, scalar, or `None`.
     """
