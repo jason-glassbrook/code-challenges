@@ -23,7 +23,7 @@ class TreeNode:
         return
 
 
-# Deserialize a binary tree node:
+# Deserialize a binary tree node.
 def node_from_data(data: Any) -> Union[TreeNode, None]:
     """
     Deserialize a binary tree node from `data`, which should be a scalar or `None`.
@@ -35,7 +35,7 @@ def node_from_data(data: Any) -> Union[TreeNode, None]:
     return TreeNode(val=data)
 
 
-# Serialize a binary tree node:
+# Serialize a binary tree node.
 def data_from_node(node: Union[TreeNode, None]) -> Any:
     """
     Serialize data from a binary tree `node`, which should be a `TreeNode` or `None`.
