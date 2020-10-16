@@ -53,7 +53,7 @@ def double_decor(decorator: Callable) -> Callable:
             # def fun(...): ...
 
             def doubled_decorator(fun):
-                return decorator(fun, *args, *kwargs)
+                return decorator(fun, *args, **kwargs)
 
             return doubled_decorator
 
