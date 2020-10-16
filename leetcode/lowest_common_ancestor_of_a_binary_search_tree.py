@@ -107,7 +107,7 @@ from typing import (    # noqa: E402
     Any, Iterable,
 )
 
-from leetcode.tools import testing    # noqa: E402
+from tools import testing    # noqa: E402
 from leetcode.tools.binary_tree import (    # noqa: E402
     node_from_data,
     data_from_node,
