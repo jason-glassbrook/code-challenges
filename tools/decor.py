@@ -2,13 +2,16 @@
 
 ############################################################
 
-from functools import wraps
-from collections.abc import Callable
+import functools as _fun
+from collections import abc as _abc
 
 #-----------------------------------------------------------
 
+# We want to export `wraps` for convenience.
+wraps = _fun.wraps
 
-def double_decor(decorator: Callable) -> Callable:
+
+def double_decor(decorator: _abc.Callable) -> _abc.Callable:
     """
     Decorator for decorators that can be used with or without additional arguments.
 
