@@ -29,7 +29,7 @@ MaybeListNode = Union[ListNode, None]
 # Deserialize a singly-linked list node.
 def node_from_data(data: Any) -> MaybeListNode:
     """
-    Deserialize a singly-linked list node from `data`, which should be something or `None`.
+    Deserialize a singly-linked list node from `data`, which must be something or `None`.
     """
 
     if data is None:
@@ -41,7 +41,7 @@ def node_from_data(data: Any) -> MaybeListNode:
 # Serialize a singly-linked list node.
 def data_from_node(node: MaybeListNode) -> Any:
     """
-    Serialize data from a singly-linked list `node`, which should be a `ListNode` or `None`.
+    Serialize data from a singly-linked list `node`, which must be a `ListNode` or `None`.
     """
 
     if node is None:
