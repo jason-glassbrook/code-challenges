@@ -2,7 +2,6 @@
 
 ############################################################
 
-from typing import Tuple
 import unittest
 import random
 
@@ -10,6 +9,7 @@ from leetcode.tools.binary_tree import (
     TreeNode,
     tree_from_data,
 )
+
 
 ############################################################
 #   Tools
@@ -22,7 +22,7 @@ def _random_val() -> int:
 
 
 def _random_TreeNode(
-) -> Tuple[Tuple[TreeNode, TreeNode, TreeNode], Tuple[int, int, int]]:
+) -> tuple[tuple[TreeNode, TreeNode, TreeNode], tuple[int, int, int]]:
 
     node__val = _random_val()
     left__val = _random_val()
