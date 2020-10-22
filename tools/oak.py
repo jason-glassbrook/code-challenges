@@ -96,15 +96,21 @@ def def_logical_inverse(
     # And we're done!
     return fun
 
+
 #-----------------------------------------------------------
 #   TYPE-CHECKING FUNCTIONS
 #-----------------------------------------------------------
 
-# @def_logical_inverse
-# def is_of(x, kinds) -> bool: return isinstance(x, kinds)
 
-# @def_logical_inverse
-# def is_none(x) -> bool: return x is None
+@def_logical_inverse
+def is_of(x, kinds) -> bool:
+    return isinstance(x, kinds)
+
+
+@def_logical_inverse
+def is_none(x) -> bool:
+    return x is None
+
 
 #---------------------------------------
 #   from `builtins`
