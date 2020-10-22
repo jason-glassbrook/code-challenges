@@ -253,28 +253,152 @@ def is_UserString(x) -> bool:
 #   from `collections.abc`
 #---------------------------------------
 
+
 # collections.abc.Container
+@def_logical_inverse
+def is_Container(x) -> bool:
+    return is_of(x, _cox.abc.Container)
+
+
 # collections.abc.Hashable
+@def_logical_inverse
+def is_Hashable(x) -> bool:
+    return is_of(x, _cox.abc.Hashable)
+
+
 # collections.abc.Iterable
+@def_logical_inverse
+def is_Iterable(x) -> bool:
+    return is_of(x, _cox.abc.Iterable)
+
+
 # collections.abc.Iterator
+@def_logical_inverse
+def is_Iterator(x) -> bool:
+    return is_of(x, _cox.abc.Iterator)
+
+
 # collections.abc.Reversible
+@def_logical_inverse
+def is_Reversible(x) -> bool:
+    return is_of(x, _cox.abc.Reversible)
+
+
 # collections.abc.Generator
+@def_logical_inverse
+def is_Generator(x) -> bool:
+    return is_of(x, _cox.abc.Generator)
+
+
 # collections.abc.Sized
+@def_logical_inverse
+def is_Sized(x) -> bool:
+    return is_of(x, _cox.abc.Sized)
+
+
 # collections.abc.Callable
+@def_logical_inverse
+def is_Callable(x) -> bool:
+    return is_of(x, _cox.abc.Callable)
+
+
 # collections.abc.Collection
+@def_logical_inverse
+def is_Collection(x) -> bool:
+    return is_of(x, _cox.abc.Collection)
+
+
 # collections.abc.Sequence
+@def_logical_inverse
+def is_Sequence(x) -> bool:
+    return is_of(x, _cox.abc.Sequence)
+
+
 # collections.abc.MutableSequence
+@def_logical_inverse
+def is_MutableSequence(x) -> bool:
+    return is_of(x, _cox.abc.MutableSequence)
+
+
 # collections.abc.ByteString
+@def_logical_inverse
+def is_ByteString(x) -> bool:
+    return is_of(x, _cox.abc.ByteString)
+
+
 # collections.abc.Set
+@def_logical_inverse
+def is_Set(x) -> bool:
+    return is_of(x, _cox.abc.Set)
+
+
 # collections.abc.MutableSet
+@def_logical_inverse
+def is_MutableSet(x) -> bool:
+    return is_of(x, _cox.abc.MutableSet)
+
+
 # collections.abc.Mapping
+@def_logical_inverse
+def is_Mapping(x) -> bool:
+    return is_of(x, _cox.abc.Mapping)
+
+
 # collections.abc.MutableMapping
+@def_logical_inverse
+def is_MutableMapping(x) -> bool:
+    return is_of(x, _cox.abc.MutableMapping)
+
+
 # collections.abc.MappingView
+@def_logical_inverse
+def is_MappingView(x) -> bool:
+    return is_of(x, _cox.abc.MappingView)
+
+
 # collections.abc.ItemsView
+@def_logical_inverse
+def is_ItemsView(x) -> bool:
+    return is_of(x, _cox.abc.ItemsView)
+
+
 # collections.abc.KeysView
+@def_logical_inverse
+def is_KeysView(x) -> bool:
+    return is_of(x, _cox.abc.KeysView)
+
+
 # collections.abc.ValuesView
+@def_logical_inverse
+def is_ValuesView(x) -> bool:
+    return is_of(x, _cox.abc.ValuesView)
+
+
 # collections.abc.Awaitable
+@def_logical_inverse
+def is_Awaitable(x) -> bool:
+    return is_of(x, _cox.abc.Awaitable)
+
+
 # collections.abc.Coroutine
+@def_logical_inverse
+def is_Coroutine(x) -> bool:
+    return is_of(x, _cox.abc.Coroutine)
+
+
 # collections.abc.AsyncIterable
+@def_logical_inverse
+def is_AsyncIterable(x) -> bool:
+    return is_of(x, _cox.abc.AsyncIterable)
+
+
 # collections.abc.AsyncIterator
+@def_logical_inverse
+def is_AsyncIterator(x) -> bool:
+    return is_of(x, _cox.abc.AsyncIterator)
+
+
 # collections.abc.AsyncGenerator
+@def_logical_inverse
+def is_AsyncGenerator(x) -> bool:
+    return is_of(x, _cox.abc.AsyncGenerator)
