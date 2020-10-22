@@ -116,81 +116,97 @@ def is_none(x) -> bool:
 #---------------------------------------
 
 
+# builtins.bool
 @def_logical_inverse
 def is_bool(x) -> bool:
     return is_of(x, bool)
 
 
+# builtins.bytearray
 @def_logical_inverse
 def is_bytearray(x) -> bool:
     return is_of(x, bytearray)
 
 
+# builtins.bytes
 @def_logical_inverse
 def is_bytes(x) -> bool:
     return is_of(x, bytes)
 
 
+# builtins.complex
 @def_logical_inverse
 def is_complex(x) -> bool:
     return is_of(x, complex)
 
 
+# builtins.dict
 @def_logical_inverse
 def is_dict(x) -> bool:
     return is_of(x, dict)
 
 
+# builtins.float
 @def_logical_inverse
 def is_float(x) -> bool:
     return is_of(x, float)
 
 
+# builtins.frozenset
 @def_logical_inverse
 def is_frozenset(x) -> bool:
     return is_of(x, frozenset)
 
 
+# builtins.int
 @def_logical_inverse
 def is_int(x) -> bool:
     return is_of(x, int)
 
 
+# builtins.list
 @def_logical_inverse
 def is_list(x) -> bool:
     return is_of(x, list)
 
 
+# builtins.property
 @def_logical_inverse
 def is_property(x) -> bool:
     return is_of(x, property)
 
 
+# builtins.range
 @def_logical_inverse
 def is_range(x) -> bool:
     return is_of(x, range)
 
 
+# builtins.set
 @def_logical_inverse
 def is_set(x) -> bool:
     return is_of(x, set)
 
 
+# builtins.slice
 @def_logical_inverse
 def is_slice(x) -> bool:
     return is_of(x, slice)
 
 
+# builtins.str
 @def_logical_inverse
 def is_str(x) -> bool:
     return is_of(x, str)
 
 
+# builtins.tuple
 @def_logical_inverse
 def is_tuple(x) -> bool:
     return is_of(x, tuple)
 
 
+# builtins.type
 @def_logical_inverse
 def is_type(x) -> bool:
     return is_of(x, type) or str(type(x)).startswith("<class 'typing.")
