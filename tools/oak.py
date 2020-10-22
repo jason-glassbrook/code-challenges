@@ -7,8 +7,7 @@
 ############################################################
 
 import sys as _sys
-# import collections as _collections
-from collections import abc as _abc
+import collections as _cox
 
 from . import twine as _twine
 from . import decor as _decor
@@ -17,8 +16,8 @@ from . import decor as _decor
 #   DECORATORS
 #-----------------------------------------------------------
 
-_DLI_FUN_TYPE = _abc.Callable[..., bool]
-_DLI_REPLACE_TYPE = _abc.Iterable[tuple[str, str, str, bool]]
+_DLI_FUN_TYPE = _cox.abc.Callable[..., bool]
+_DLI_REPLACE_TYPE = _cox.abc.Iterable[tuple[str, str, str, bool]]
 _DLI_REPLACE_DEFAULT = (
     # (position: str, old_sub: str, new_sub: str, stop_after: bool)
     ("<", "is_", "isnt_", True),
@@ -201,14 +200,54 @@ def is_type(x) -> bool:
 #   from `collections`
 #---------------------------------------
 
+
 # collections.deque
+@def_logical_inverse
+def is_Deque(x) -> bool:
+    return is_of(x, _cox.deque)
+
+
 # collections.ChainMap
+@def_logical_inverse
+def is_ChainMap(x) -> bool:
+    return is_of(x, _cox.ChainMap)
+
+
 # collections.Counter
+@def_logical_inverse
+def is_Counter(x) -> bool:
+    return is_of(x, _cox.Counter)
+
+
 # collections.OrderedDict
+@def_logical_inverse
+def is_OrderedDict(x) -> bool:
+    return is_of(x, _cox.OrderedDict)
+
+
 # collections.defaultdict
+@def_logical_inverse
+def is_DefaultDict(x) -> bool:
+    return is_of(x, _cox.defaultdict)
+
+
 # collections.UserDict
+@def_logical_inverse
+def is_UserDict(x) -> bool:
+    return is_of(x, _cox.UserDict)
+
+
 # collections.UserList
+@def_logical_inverse
+def is_UserList(x) -> bool:
+    return is_of(x, _cox.UserList)
+
+
 # collections.UserString
+@def_logical_inverse
+def is_UserString(x) -> bool:
+    return is_of(x, _cox.UserString)
+
 
 #---------------------------------------
 #   from `collections.abc`
