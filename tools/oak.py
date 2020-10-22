@@ -10,8 +10,10 @@ import sys as _sys
 import collections as _cox
 import collections.abc as _abc
 
-from . import twine as _twine
-from . import decor as _decor
+from . import (
+    twine as _twine,
+    decor as _decor,
+)
 
 #-----------------------------------------------------------
 #   DECORATORS
