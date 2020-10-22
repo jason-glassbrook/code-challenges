@@ -116,53 +116,86 @@ def is_none(x) -> bool:
 #   from `builtins`
 #---------------------------------------
 
-# @def_logical_inverse
-# def is_bool(x) -> bool: return is_of(x, bool)
 
-# @def_logical_inverse
-# def is_bytearray(x) -> bool: return is_of(x, bytearray)
+@def_logical_inverse
+def is_bool(x) -> bool:
+    return is_of(x, bool)
 
-# @def_logical_inverse
-# def is_bytes(x) -> bool: return is_of(x, bytes)
 
-# @def_logical_inverse
-# def is_complex(x) -> bool: return is_of(x, complex)
+@def_logical_inverse
+def is_bytearray(x) -> bool:
+    return is_of(x, bytearray)
 
-# @def_logical_inverse
-# def is_dict(x) -> bool: return is_of(x, dict)
 
-# @def_logical_inverse
-# def is_float(x) -> bool: return is_of(x, float)
+@def_logical_inverse
+def is_bytes(x) -> bool:
+    return is_of(x, bytes)
 
-# @def_logical_inverse
-# def is_frozenset(x) -> bool: return is_of(x, frozenset)
 
-# @def_logical_inverse
-# def is_int(x) -> bool: return is_of(x, int)
+@def_logical_inverse
+def is_complex(x) -> bool:
+    return is_of(x, complex)
 
-# @def_logical_inverse
-# def is_list(x) -> bool: return is_of(x, list)
 
-# @def_logical_inverse
-# def is_property(x) -> bool: return is_of(x, property)
+@def_logical_inverse
+def is_dict(x) -> bool:
+    return is_of(x, dict)
 
-# @def_logical_inverse
-# def is_range(x) -> bool: return is_of(x, range)
 
-# @def_logical_inverse
-# def is_set(x) -> bool: return is_of(x, set)
+@def_logical_inverse
+def is_float(x) -> bool:
+    return is_of(x, float)
 
-# @def_logical_inverse
-# def is_slice(x) -> bool: return is_of(x, slice)
 
-# @def_logical_inverse
-# def is_str(x) -> bool: return is_of(x, str)
+@def_logical_inverse
+def is_frozenset(x) -> bool:
+    return is_of(x, frozenset)
 
-# @def_logical_inverse
-# def is_tuple(x) -> bool: return is_of(x, tuple)
 
-# @def_logical_inverse
-# def is_type(x) -> bool: return is_of(x, type) or str(type(x)).startswith("<class 'typing.")
+@def_logical_inverse
+def is_int(x) -> bool:
+    return is_of(x, int)
+
+
+@def_logical_inverse
+def is_list(x) -> bool:
+    return is_of(x, list)
+
+
+@def_logical_inverse
+def is_property(x) -> bool:
+    return is_of(x, property)
+
+
+@def_logical_inverse
+def is_range(x) -> bool:
+    return is_of(x, range)
+
+
+@def_logical_inverse
+def is_set(x) -> bool:
+    return is_of(x, set)
+
+
+@def_logical_inverse
+def is_slice(x) -> bool:
+    return is_of(x, slice)
+
+
+@def_logical_inverse
+def is_str(x) -> bool:
+    return is_of(x, str)
+
+
+@def_logical_inverse
+def is_tuple(x) -> bool:
+    return is_of(x, tuple)
+
+
+@def_logical_inverse
+def is_type(x) -> bool:
+    return is_of(x, type) or str(type(x)).startswith("<class 'typing.")
+
 
 #---------------------------------------
 #   from `collections`
