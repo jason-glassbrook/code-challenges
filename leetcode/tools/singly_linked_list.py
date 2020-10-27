@@ -85,10 +85,14 @@ def list_from_data(data: MaybeIterable) -> MaybeListNode:
     """
     Deserialize a singly-linked list from `data`, which must be a `list` or `None`.
     If `data` is a list, then it must be a list of items, where each item is...
-    -   a `dict` like `{ "val": Any, "next_index": int, ... }`,
-        where `next_index` is the index the item's `next` `ListNode` in `data`;
-    -   a `dict` like `{ "val": Any, ... }`;
-    -   or something else.
+    -   a `dict` like `{ "val": Any, "next": Union[int, bool, None], ... }`, where if `data[i]["next"]`...
+        -   is an `int`, then `node[i].next` will link to the node specified by `data[data[i]["next"]]`;
+        -   is a `bool` or `None`, then it indicates _whether_ the `node[i].next` exists, where...
+            -   if `True`, then `node[i].next` will link to the node specified by `data[i+1]`;
+            -   if `False` or `None`, then `node[i].next` will be `None`;
+        -   otherwise, this raises a `TypeError`;
+    -   a `dict` like `{ "val": Any, ... }`, where `node[i].next` links to `node[i+1]` if available;
+    -   or something else, where `node[i].next` links to `node[i+1]` if available.
     """
 
     if data is None:
@@ -99,27 +103,29 @@ def list_from_data(data: MaybeIterable) -> MaybeListNode:
 
     n = len(data)
     node_list = [None] * n
-    next_list = [None] * n
+    next_dict = {}    # ⬅ Only store irregular links.
 
-    # Process `data` list into `node_list` and `next_list`.
+    # Process `data` list into `node_list` and `next_dict`.
     for (i, item) in enumerate(data):
 
-        if _oak.is_dict(item):
-            # If `item` is like `{ "val": Any, ... }`...
-            if "val" in item:
-                node_list[i] = ListNode(val=item["val"])
+        # If `item` is like `Any` or `{ "val": Any, ... }`...
+        node_list[i] = node_from_data(item, use_dict=True)
 
-                # If `item` is like `{ "val": Any, "next_index": int, ... }`...
-                if "next_index" in item:
-                    next_list[i] = item["next_index"]
+        # If `item` is like `{ "val": Any, "next": int, ... }`...
+        if _oak.is_dict(item) and "next" in item:
+            item__next = item["next"]
+            if (_oak.is_bool(item__next) or item__next is None) and not item__next:
+                next_dict[i] = None
+            elif _oak.is_int(item__next):
+                next_dict[i] = item__next
+            else:
+                raise TypeError(f"`data[{i}][\"next\"]` must be a `bool` or `int`.")
 
-        else:
-            node_list[i] = ListNode(val=item)
-
-    # Link up nodes based on `next_list`.
-    for (i, next_index) in enumerate(next_list):
-        if next_index:
-            node_list[i].next = node_list[next_index]
+    # Link up nodes based on `next_dict`.
+    for (i, node) in enumerate(node_list):
+        if i in next_dict:
+            if next_dict[i] is not None:
+                node_list[i].next = node_list[next_dict[i]]
         elif i < (n - 1):
             node_list[i].next = node_list[i + 1]
 
