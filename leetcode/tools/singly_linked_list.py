@@ -28,25 +28,54 @@ MaybeListNode = Union[ListNode, None]
 
 
 # Deserialize a singly-linked list node.
-def node_from_data(data: Any) -> MaybeListNode:
+def node_from_data(data: Any, use_dict: bool = True) -> MaybeListNode:
     """
     Deserialize a singly-linked list node from `data`, which must be something or `None`.
+
+    This optionally accepts `use_dict` as an argument.
+    -   If `use_dict` is `True` (default), then...
+        1.  this attempts to interpret `data` as a `dict` like `{ "val": Any, ... }`
+            (ignoring _all_ other fields) and use `data["val"]` as the `val`;
+        2.  and if that fails, this will use `data` as the `val`.
+    -   If `use_dict` is `False`, then this will simply use `data` as the `val`.
+
+    If `data` is `None`, this will return `None`.
     """
 
     if data is None:
         return None
 
+    if use_dict and _oak.is_dict(data) and "val" in data:
+        return ListNode(val=data["val"])
+
     return ListNode(val=data)
 
 
 # Serialize a singly-linked list node.
-def data_from_node(node: MaybeListNode) -> Any:
+def data_from_node(node: MaybeListNode, use_dict: bool = True) -> Any:
     """
     Serialize data from a singly-linked list `node`, which must be a `ListNode` or `None`.
+
+    This optionally accepts `use_dict` as an argument.
+    -   If `use_dict` is `True` (default), then this will return a `dict` like
+        `{ "val": (node.val), "next": bool }`.
+        The `"next"` item will only reflect _whether_ `node.next` exists.
+    -   If `use_dict` is `False`, then this will return `node.val`.
+
+    If `data` is `None`, this will return `None`.
     """
 
     if node is None:
         return None
+
+    if not _oak.is_of(node, ListNode):
+        raise TypeError("The provided `node` must be a `ListNode` or `None`.")
+
+    if use_dict:
+        return {
+            "val": node.val,
+            "next": node.next is not None,
+        }
 
     return node.val
 
