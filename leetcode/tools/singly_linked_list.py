@@ -2,10 +2,8 @@
 
 ############################################################
 
-from typing import (
-    Any,
-    Union,
-)
+from typing import (Any, Union)
+from collections.abc import Iterable
 
 from tools import oak as _oak
 
