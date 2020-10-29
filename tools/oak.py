@@ -4,16 +4,24 @@
 #   OAK (Of A Kind)
 #-----------------------------------------------------------
 #   A module of tools for type-checking.
+#   Also re-exports:
+#   -   collections as cox
+#   -   collections.abc as abc
+#   -   typing as ing
 ############################################################
 
 import sys as _sys
-import collections as cox
-import collections.abc as abc
 
 from . import (
     twine as _twine,
     decor as _decor,
 )
+
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+import typing as ing    # noqa: F401
+import collections as cox    # noqa: F401
+import collections.abc as abc    # noqa: F401
 
 #-----------------------------------------------------------
 #   DECORATORS
