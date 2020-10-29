@@ -7,8 +7,8 @@
 ############################################################
 
 import sys as _sys
-import collections as _cox
-import collections.abc as _abc
+import collections as cox
+import collections.abc as abc
 
 from . import (
     twine as _twine,
@@ -19,8 +19,8 @@ from . import (
 #   DECORATORS
 #-----------------------------------------------------------
 
-_DLI_FUN_TYPE = _abc.Callable[..., bool]
-_DLI_REPLACE_TYPE = _abc.Iterable[tuple[str, str, str, bool]]
+_DLI_FUN_TYPE = abc.Callable[..., bool]
+_DLI_REPLACE_TYPE = abc.Iterable[tuple[str, str, str, bool]]
 _DLI_REPLACE_DEFAULT = (
     # (position: str, old_sub: str, new_sub: str, stop_after: bool)
     ("<", "is_", "isnt_", True),
@@ -223,49 +223,49 @@ def is_type(x) -> bool:
 # collections.deque
 @def_logical_inverse
 def is_Deque(x) -> bool:
-    return is_of(x, _cox.deque)
+    return is_of(x, cox.deque)
 
 
 # collections.ChainMap
 @def_logical_inverse
 def is_ChainMap(x) -> bool:
-    return is_of(x, _cox.ChainMap)
+    return is_of(x, cox.ChainMap)
 
 
 # collections.Counter
 @def_logical_inverse
 def is_Counter(x) -> bool:
-    return is_of(x, _cox.Counter)
+    return is_of(x, cox.Counter)
 
 
 # collections.OrderedDict
 @def_logical_inverse
 def is_OrderedDict(x) -> bool:
-    return is_of(x, _cox.OrderedDict)
+    return is_of(x, cox.OrderedDict)
 
 
 # collections.defaultdict
 @def_logical_inverse
 def is_DefaultDict(x) -> bool:
-    return is_of(x, _cox.defaultdict)
+    return is_of(x, cox.defaultdict)
 
 
 # collections.UserDict
 @def_logical_inverse
 def is_UserDict(x) -> bool:
-    return is_of(x, _cox.UserDict)
+    return is_of(x, cox.UserDict)
 
 
 # collections.UserList
 @def_logical_inverse
 def is_UserList(x) -> bool:
-    return is_of(x, _cox.UserList)
+    return is_of(x, cox.UserList)
 
 
 # collections.UserString
 @def_logical_inverse
 def is_UserString(x) -> bool:
-    return is_of(x, _cox.UserString)
+    return is_of(x, cox.UserString)
 
 
 #---------------------------------------
@@ -276,148 +276,148 @@ def is_UserString(x) -> bool:
 # collections.abc.Container
 @def_logical_inverse
 def is_Container(x) -> bool:
-    return is_of(x, _abc.Container)
+    return is_of(x, abc.Container)
 
 
 # collections.abc.Hashable
 @def_logical_inverse
 def is_Hashable(x) -> bool:
-    return is_of(x, _abc.Hashable)
+    return is_of(x, abc.Hashable)
 
 
 # collections.abc.Iterable
 @def_logical_inverse
 def is_Iterable(x) -> bool:
-    return is_of(x, _abc.Iterable)
+    return is_of(x, abc.Iterable)
 
 
 # collections.abc.Iterator
 @def_logical_inverse
 def is_Iterator(x) -> bool:
-    return is_of(x, _abc.Iterator)
+    return is_of(x, abc.Iterator)
 
 
 # collections.abc.Reversible
 @def_logical_inverse
 def is_Reversible(x) -> bool:
-    return is_of(x, _abc.Reversible)
+    return is_of(x, abc.Reversible)
 
 
 # collections.abc.Generator
 @def_logical_inverse
 def is_Generator(x) -> bool:
-    return is_of(x, _abc.Generator)
+    return is_of(x, abc.Generator)
 
 
 # collections.abc.Sized
 @def_logical_inverse
 def is_Sized(x) -> bool:
-    return is_of(x, _abc.Sized)
+    return is_of(x, abc.Sized)
 
 
 # collections.abc.Callable
 @def_logical_inverse
 def is_Callable(x) -> bool:
-    return is_of(x, _abc.Callable)
+    return is_of(x, abc.Callable)
 
 
 # collections.abc.Collection
 @def_logical_inverse
 def is_Collection(x) -> bool:
-    return is_of(x, _abc.Collection)
+    return is_of(x, abc.Collection)
 
 
 # collections.abc.Sequence
 @def_logical_inverse
 def is_Sequence(x) -> bool:
-    return is_of(x, _abc.Sequence)
+    return is_of(x, abc.Sequence)
 
 
 # collections.abc.MutableSequence
 @def_logical_inverse
 def is_MutableSequence(x) -> bool:
-    return is_of(x, _abc.MutableSequence)
+    return is_of(x, abc.MutableSequence)
 
 
 # collections.abc.ByteString
 @def_logical_inverse
 def is_ByteString(x) -> bool:
-    return is_of(x, _abc.ByteString)
+    return is_of(x, abc.ByteString)
 
 
 # collections.abc.Set
 @def_logical_inverse
 def is_Set(x) -> bool:
-    return is_of(x, _abc.Set)
+    return is_of(x, abc.Set)
 
 
 # collections.abc.MutableSet
 @def_logical_inverse
 def is_MutableSet(x) -> bool:
-    return is_of(x, _abc.MutableSet)
+    return is_of(x, abc.MutableSet)
 
 
 # collections.abc.Mapping
 @def_logical_inverse
 def is_Mapping(x) -> bool:
-    return is_of(x, _abc.Mapping)
+    return is_of(x, abc.Mapping)
 
 
 # collections.abc.MutableMapping
 @def_logical_inverse
 def is_MutableMapping(x) -> bool:
-    return is_of(x, _abc.MutableMapping)
+    return is_of(x, abc.MutableMapping)
 
 
 # collections.abc.MappingView
 @def_logical_inverse
 def is_MappingView(x) -> bool:
-    return is_of(x, _abc.MappingView)
+    return is_of(x, abc.MappingView)
 
 
 # collections.abc.ItemsView
 @def_logical_inverse
 def is_ItemsView(x) -> bool:
-    return is_of(x, _abc.ItemsView)
+    return is_of(x, abc.ItemsView)
 
 
 # collections.abc.KeysView
 @def_logical_inverse
 def is_KeysView(x) -> bool:
-    return is_of(x, _abc.KeysView)
+    return is_of(x, abc.KeysView)
 
 
 # collections.abc.ValuesView
 @def_logical_inverse
 def is_ValuesView(x) -> bool:
-    return is_of(x, _abc.ValuesView)
+    return is_of(x, abc.ValuesView)
 
 
 # collections.abc.Awaitable
 @def_logical_inverse
 def is_Awaitable(x) -> bool:
-    return is_of(x, _abc.Awaitable)
+    return is_of(x, abc.Awaitable)
 
 
 # collections.abc.Coroutine
 @def_logical_inverse
 def is_Coroutine(x) -> bool:
-    return is_of(x, _abc.Coroutine)
+    return is_of(x, abc.Coroutine)
 
 
 # collections.abc.AsyncIterable
 @def_logical_inverse
 def is_AsyncIterable(x) -> bool:
-    return is_of(x, _abc.AsyncIterable)
+    return is_of(x, abc.AsyncIterable)
 
 
 # collections.abc.AsyncIterator
 @def_logical_inverse
 def is_AsyncIterator(x) -> bool:
-    return is_of(x, _abc.AsyncIterator)
+    return is_of(x, abc.AsyncIterator)
 
 
 # collections.abc.AsyncGenerator
 @def_logical_inverse
 def is_AsyncGenerator(x) -> bool:
-    return is_of(x, _abc.AsyncGenerator)
+    return is_of(x, abc.AsyncGenerator)
