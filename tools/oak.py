@@ -19,9 +19,11 @@ from . import (
 
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-import typing as ing    # noqa: F401
-import collections as cox    # noqa: F401
-import collections.abc as abc    # noqa: F401
+from . import (         # noqa: F401
+    oak__ing as ing,    # noqa: F401
+    oak__cox as cox,    # noqa: F401
+    oak__abc as abc,    # noqa: F401
+)
 
 #-----------------------------------------------------------
 #   DECORATORS
