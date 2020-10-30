@@ -5,7 +5,11 @@
 import unittest
 import random
 
-from typing import (Any, Union, TypedDict)
+from tools.oak__ing import (
+    Any as _Any,
+    Union as _Union,
+    TypedDict as _TypedDict,
+)
 
 from leetcode.tools.singly_linked_list import (
     ListNode,
@@ -21,10 +25,10 @@ _NODE_ATTR_LIST = (_MAIN_ATTR, "next")
 _NODE_RANGE = range(len(_NODE_ATTR_LIST))
 
 
-class _ListNodeDict(TypedDict):
-    attr: Union[_MAIN_ATTR, str]
+class _ListNodeDict(_TypedDict):
+    attr: _Union[_MAIN_ATTR, str]
     node: ListNode
-    node__val: Any
+    node__val: _Any
 
 
 def _random_val() -> int:

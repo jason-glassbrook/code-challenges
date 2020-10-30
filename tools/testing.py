@@ -7,19 +7,21 @@
 #   challenges.
 ############################################################
 
-from typing import (
-    Any,
-    Type,
-    Union,
-    Callable,
-    Iterable,
-)
 import unittest
+
+from tools.oak__ing import (
+    Any as _Any,
+    Union as _Union,
+)
+from tools.oak__abc import (
+    Callable as _Callable,
+    Iterable as _Iterable,
+)
 
 #-----------------------------------------------------------
 
 
-def getattr_of_instance(some_class: Type, attr_name: str) -> Any:
+def getattr_of_instance(some_class: type, attr_name: str) -> _Any:
 
     return getattr(some_class(), attr_name)
 
@@ -29,7 +31,7 @@ class TestSolution(unittest.TestCase):
     SOLUTION_CLASS = None
     SOLUTION_FUNCTION = None
 
-    def run_solution(self, *args: Iterable) -> Any:
+    def run_solution(self, *args: _Iterable) -> _Any:
 
         function = getattr_of_instance(
             self.SOLUTION_CLASS,
@@ -40,15 +42,15 @@ class TestSolution(unittest.TestCase):
 
     def run_test(
         self,
-        args: Iterable,
-        answer: Any,
-        assertion: Union[Callable, str, None] = None,
-        assertion__rest: Union[Iterable, None] = None,
-        transform_result: Union[Callable, None] = None,
-        transform_result__rest: Union[Iterable, None] = None,
-        transform_answer: Union[Callable, None] = None,
-        transform_answer__rest: Union[Iterable, None] = None,
-    ) -> Any:
+        args: _Iterable,
+        answer: _Any,
+        assertion: _Union[_Callable, str, None] = None,
+        assertion__rest: _Union[_Iterable, None] = None,
+        transform_result: _Union[_Callable, None] = None,
+        transform_result__rest: _Union[_Iterable, None] = None,
+        transform_answer: _Union[_Callable, None] = None,
+        transform_answer__rest: _Union[_Iterable, None] = None,
+    ) -> _Any:
 
         #---------------------------------------
         #   Defaults

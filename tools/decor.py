@@ -7,7 +7,7 @@
 ############################################################
 
 import functools as _fun
-from collections import abc as _abc
+import collections.abc as _abc
 
 #-----------------------------------------------------------
 

@@ -2,11 +2,15 @@
 
 ############################################################
 
-from typing import (
-    Any,
-    Union,
-    Iterable,
+from tools.oak__ing import (
+    Any as _Any,
+    Union as _Union,
 )
+from tools.oak__abc import (
+    Iterable as _Iterable,
+)
+
+_MaybeIterable = _Union[_Iterable, None]
 
 #-----------------------------------------------------------
 
@@ -23,14 +27,13 @@ class TreeNode:
         return
 
 
-#-----------------------------------------------------------
+MaybeTreeNode = _Union[TreeNode, None]
 
-MaybeIterable = Union[Iterable, None]
-MaybeTreeNode = Union[TreeNode, None]
+#-----------------------------------------------------------
 
 
 # Deserialize a binary tree node.
-def node_from_data(data: Any) -> MaybeTreeNode:
+def node_from_data(data: _Any) -> MaybeTreeNode:
     """
     Deserialize a binary tree node from `data`, which must be something or `None`.
     """
@@ -42,7 +45,7 @@ def node_from_data(data: Any) -> MaybeTreeNode:
 
 
 # Serialize a binary tree node.
-def data_from_node(node: MaybeTreeNode) -> Any:
+def data_from_node(node: MaybeTreeNode) -> _Any:
     """
     Serialize data from a binary tree `node`, which must be a `TreeNode` or `None`.
     """
@@ -54,14 +57,14 @@ def data_from_node(node: MaybeTreeNode) -> Any:
 
 
 # Deserialize a binary tree.
-def tree_from_data(data: MaybeIterable) -> MaybeTreeNode:
+def tree_from_data(data: _MaybeIterable) -> MaybeTreeNode:
     """
     Deserialize a binary tree from `data`, which must be of the form `[n, l, r]` or `None`,
     -   where `n` is a scalar value,
     -   where `l` and `r` may be `[n, l, r]`, scalar, or `None`.
     """
 
-    def convert_list_data(list_data: Iterable) -> MaybeTreeNode:
+    def convert_list_data(list_data: _Iterable) -> MaybeTreeNode:
 
         n = len(list_data)
         node = None
@@ -88,7 +91,7 @@ def tree_from_data(data: MaybeIterable) -> MaybeTreeNode:
 
     def convert_data(data) -> MaybeTreeNode:
 
-        if isinstance(data, Iterable):
+        if isinstance(data, _Iterable):
             return convert_list_data(data)
 
         else:

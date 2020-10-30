@@ -2,10 +2,16 @@
 
 ############################################################
 
-from typing import (Any, Union)
-from collections.abc import Iterable
-
 from tools import oak as _oak
+from tools.oak__ing import (
+    Any as _Any,
+    Union as _Union,
+)
+from tools.oak__abc import (
+    Iterable as _Iterable,
+)
+
+_MaybeIterable = _Union[_Iterable, None]
 
 #-----------------------------------------------------------
 
@@ -21,14 +27,13 @@ class ListNode:
         return
 
 
-#-----------------------------------------------------------
+MaybeListNode = _Union[ListNode, None]
 
-MaybeIterable = Union[Iterable, None]
-MaybeListNode = Union[ListNode, None]
+#-----------------------------------------------------------
 
 
 # Deserialize a singly-linked list node.
-def node_from_data(data: Any, use_dict: bool = True) -> MaybeListNode:
+def node_from_data(data: _Any, use_dict: bool = True) -> MaybeListNode:
     """
     Deserialize a singly-linked list node from `data`, which must be something or `None`.
 
@@ -52,7 +57,7 @@ def node_from_data(data: Any, use_dict: bool = True) -> MaybeListNode:
 
 
 # Serialize a singly-linked list node.
-def data_from_node(node: MaybeListNode, use_dict: bool = True) -> Any:
+def data_from_node(node: MaybeListNode, use_dict: bool = True) -> _Any:
     """
     Serialize data from a singly-linked list `node`, which must be a `ListNode` or `None`.
 
@@ -81,17 +86,17 @@ def data_from_node(node: MaybeListNode, use_dict: bool = True) -> Any:
 
 
 # Deserialize a singly-linked list.
-def list_from_data(data: MaybeIterable) -> MaybeListNode:
+def list_from_data(data: _MaybeIterable) -> MaybeListNode:
     """
     Deserialize a singly-linked list from `data`, which must be a `list` or `None`.
     If `data` is a list, then it must be a list of items, where each item is...
-    -   a `dict` like `{ "val": Any, "next": Union[int, bool, None], ... }`, where if `data[i]["next"]`...
+    -   a `dict` like `{ "val": _Any, "next": _Union[int, bool, None], ... }`, where if `data[i]["next"]`...
         -   is an `int`, then `node[i].next` will link to the node specified by `data[data[i]["next"]]`;
         -   is a `bool` or `None`, then it indicates _whether_ the `node[i].next` exists, where...
             -   if `True`, then `node[i].next` will link to the node specified by `data[i+1]`;
             -   if `False` or `None`, then `node[i].next` will be `None`;
         -   otherwise, this raises a `TypeError`;
-    -   a `dict` like `{ "val": Any, ... }`, where `node[i].next` links to `node[i+1]` if available;
+    -   a `dict` like `{ "val": _Any, ... }`, where `node[i].next` links to `node[i+1]` if available;
     -   or something else, where `node[i].next` links to `node[i+1]` if available.
     """
 
@@ -99,7 +104,7 @@ def list_from_data(data: MaybeIterable) -> MaybeListNode:
         return None
 
     if not _oak.is_Iterable(data):
-        raise TypeError("The provided `data` must be `Iterable` or `None`.")
+        raise TypeError("The provided `data` must be `_Iterable` or `None`.")
 
     n = len(data)
     node_list = [None] * n
@@ -108,10 +113,10 @@ def list_from_data(data: MaybeIterable) -> MaybeListNode:
     # Process `data` list into `node_list` and `next_dict`.
     for (i, item) in enumerate(data):
 
-        # If `item` is like `Any` or `{ "val": Any, ... }`...
+        # If `item` is like `_Any` or `{ "val": _Any, ... }`...
         node_list[i] = node_from_data(item, use_dict=True)
 
-        # If `item` is like `{ "val": Any, "next": int, ... }`...
+        # If `item` is like `{ "val": _Any, "next": int, ... }`...
         if _oak.is_dict(item) and "next" in item:
             item__next = item["next"]
             if (_oak.is_bool(item__next) or item__next is None) and not item__next:
