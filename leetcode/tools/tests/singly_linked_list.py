@@ -13,6 +13,8 @@ from tools.oak__ing import (
 
 from leetcode.tools.singly_linked_list import (
     ListNode,
+    node_from_data,
+    data_from_node,
     list_from_data,
 )
 
@@ -70,6 +72,26 @@ def _random_ListNode() -> tuple[_ListNodeDict, ...]:
 
 
 class TestListNode(unittest.TestCase):
+
+    pass
+
+
+############################################################
+#   Test `node_from_data`
+############################################################
+
+
+class TestNodeFromData(unittest.TestCase):
+
+    pass
+
+
+############################################################
+#   Test `data_from_node`
+############################################################
+
+
+class TestDataFromNode(unittest.TestCase):
 
     pass
 
