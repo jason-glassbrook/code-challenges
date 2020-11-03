@@ -7,6 +7,8 @@ import random
 
 from leetcode.tools.binary_tree import (
     TreeNode,
+    node_from_data,
+    data_from_node,
     tree_from_data,
 )
 
@@ -86,6 +88,26 @@ class TestTreeNode(unittest.TestCase):
         self.assertIs(node.right, None)
 
         return
+
+
+############################################################
+#   Test `node_from_data`
+############################################################
+
+
+class TestNodeFromData(unittest.TestCase):
+
+    pass
+
+
+############################################################
+#   Test `data_from_node`
+############################################################
+
+
+class TestDataFromNode(unittest.TestCase):
+
+    pass
 
 
 ############################################################
