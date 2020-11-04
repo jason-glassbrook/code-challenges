@@ -73,7 +73,38 @@ def _random_ListNode() -> tuple[_ListNodeDict, ...]:
 
 class TestListNode(unittest.TestCase):
 
-    pass
+    def test_node_val_is_correct(self):
+
+        (node_dict, __) = _random_ListNode()
+
+        node = node_dict["node"]
+        node__val = node_dict["node__val"]
+
+        self.assertEqual(node.val, node__val)
+
+        return
+
+    def test_next_val_is_correct(self):
+
+        (node_dict, next_dict) = _random_ListNode()
+
+        node = node_dict["node"]
+        next__val = next_dict["node__val"]
+
+        self.assertEqual(node.next.val, next__val)
+
+        return
+
+    def test_next_None_works(self):
+
+        (node_dict, __) = _random_ListNode()
+
+        node = node_dict["node"]
+        node.next = None
+
+        self.assertIs(node.next, None)
+
+        return
 
 
 ############################################################
